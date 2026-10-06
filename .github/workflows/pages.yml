@@ -39,3 +39,12 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Ping IndexNow
+        run: |
+          sleep 20
+          SITE="${{ steps.deployment.outputs.page_url }}"
+          KEY="09179b15a8c42e416cc7712b095079b1"
+          URLS=$(curl -s "${SITE}sitemap.xml" | grep -oP '(?<=<loc>)[^<]+' | jq -R . | jq -s -c .)
+          curl -s -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"maktaba-warraqa.github.io\",\"key\":\"$KEY\",\"keyLocation\":\"${SITE}$KEY.txt\",\"urlList\":$URLS}"
