@@ -24,6 +24,8 @@ jobs:
           python-version: "3.12"
       - uses: actions/configure-pages@v5
         id: pages
+      - name: Install image optimizer
+        run: pip install --quiet pillow
       - name: Build static site
         run: python build.py --site-url "${{ steps.pages.outputs.base_url }}"
       - uses: actions/upload-pages-artifact@v3
