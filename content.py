@@ -206,6 +206,13 @@ HOME = {
     for lang, t in _text.items()
 }
 
+# Skip services listed in SVC_ORDER but missing from content/*.json,
+# so a CMS edit that renames/removes a service never breaks the build.
+_missing = [k for k in SVC_ORDER if any(k not in t["services"] for t in _text.values())]
+if _missing:
+    print(f"WARNING: services missing in content/*.json, skipped: {_missing}")
+    SVC_ORDER = [k for k in SVC_ORDER if k not in _missing]
+
 SVC = {
     lang: {
         key: {
