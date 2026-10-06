@@ -15,7 +15,7 @@
     "meta": "Bookstore and print shop in Batna: printing, large format for architects, thesis formatting, digital services and online shopping help. Call 0773 58 99 54.",
     "kicker": "",
     "h1": "Bookstore, print shop and digital services in Batna",
-    "lead": "Maktaba Warraqa is a bookstore and print shop on Rue des frères Abbabsa in Batna. We offer printing and photocopying, large format printing for architects, thesis and report formatting, school supplies, digital services and online shopping help.",
+    "lead": "Maktaba Warraqa is a bookstore and print shop on Rue des frères Abbabsa in Batna. We offer printing and photocopying, plan printing for architects, logo, business card and website design, thesis and report formatting, school supplies, digital services and online shopping help.",
     "atouts": [
       {
         "titre": "All in one place",
@@ -49,7 +49,7 @@
       },
       {
         "question": "What services do you offer?",
-        "reponse": "Printing and photocopying, large format printing for architects, thesis and report formatting, supplies and printing for schools, digital and AI services, and online shopping help."
+        "reponse": "Printing and photocopying, plan printing for architects, logo, business card, brand guidelines and website design, thesis and report formatting, supplies and printing for schools, digital and AI services, and online shopping help."
       }
     ]
   },
@@ -127,6 +127,48 @@
         }
       ]
     },
+    "design": {
+      "name": "Logo, business cards and websites",
+      "card": "Logo design, brand guidelines, business cards and a showcase website for your business.",
+      "title": "Logo, Business Card & Website Design in Batna | Maktaba Warraqa",
+      "h1": "Logo, business card, brand guidelines and website design in Batna",
+      "meta": "Logo design, brand guidelines, business cards and showcase websites for shops, craftsmen and professionals in Batna. WhatsApp 0773 58 99 54.",
+      "summary": "Maktaba Warraqa creates your business identity in Batna: logo, brand guidelines (colours, fonts, usage rules), business cards, flyers and a showcase website. We then print your cards and materials in the shop, and connect your website to your Google Business Profile so customers find you on Google Search and Maps. For shops, craftsmen, professionals and associations.",
+      "items": [
+        "Logo design",
+        "Brand guidelines: colours, fonts and usage rules",
+        "Business card design and printing",
+        "Flyers, posters and menus in your brand colours",
+        "Showcase website in French and Arabic",
+        "Website connected to your Google Business Profile"
+      ],
+      "faq": [
+        {
+          "question": "How many logo proposals do I get?",
+          "reponse": "We start from your ideas and your business, propose several directions, then refine the one you choose. The number of directions is set with you in the quote."
+        },
+        {
+          "question": "What are brand guidelines?",
+          "reponse": "A short document setting your colours, fonts and how to use your logo, so your cards, flyers, sign and website stay consistent."
+        },
+        {
+          "question": "Do you print the business cards you design?",
+          "reponse": "Yes. We design the layout and print your cards in the shop, Rue des frères Abbabsa in Batna."
+        },
+        {
+          "question": "What does a showcase website include?",
+          "reponse": "Your services, opening hours, address with map, contact details and a WhatsApp button, in French and Arabic, with the basics of Google visibility."
+        },
+        {
+          "question": "Will the website be connected to my Google profile?",
+          "reponse": "Yes. We add the website link to your Google Business Profile and the profile link to the website, with the same name, address and phone everywhere."
+        },
+        {
+          "question": "How do I get a quote?",
+          "reponse": "By phone or WhatsApp at 0773 58 99 54, or in the shop."
+        }
+      ]
+    },
     "reports": {
       "name": "Theses and reports",
       "card": "Theses, final-year projects, reports, CVs: we take care of the layout.",
@@ -197,7 +239,7 @@
         "AI workshops for pupils, students and teachers",
         "Canva design: posters, posts and presentations",
         "Google Business Profile setup for shops",
-        "Logos, QR codes and business cards for local businesses"
+        "QR codes for menus, social media and Google reviews"
       ],
       "faq": [
         {

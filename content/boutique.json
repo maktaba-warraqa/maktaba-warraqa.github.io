@@ -1,6 +1,7 @@
 {
   "telephone": "0773 58 99 54",
   "google_maps": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x12f4115031e3476b:0x119f1f5bf5146c3c",
+  "fiche_google": "",
   "rue": "Rue des frères Abbabsa",
   "ville": "Batna",
   "code_postal": "05000",
@@ -24,5 +25,6 @@
       "ouverture": "14:00",
       "fermeture": "21:00"
     }
-  ]
+  ],
+  "lien_avis": ""
 }

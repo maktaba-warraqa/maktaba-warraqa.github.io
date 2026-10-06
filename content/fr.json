@@ -15,7 +15,7 @@
     "meta": "Librairie, imprimerie, grand format pour architectes, mise en page de mémoires, services digitaux et achats en ligne à Batna. Appelez le 0773 58 99 54.",
     "kicker": "",
     "h1": "Librairie, imprimerie et services digitaux à Batna",
-    "lead": "Maktaba Warraqa est une librairie-imprimerie située Rue des frères Abbabsa à Batna. Nous proposons l'impression et la photocopie, le grand format pour architectes, la mise en page de mémoires et rapports, des fournitures scolaires, des services digitaux et l'aide à l'achat en ligne.",
+    "lead": "Maktaba Warraqa est une librairie-imprimerie située Rue des frères Abbabsa à Batna. Nous proposons l'impression et la photocopie, l'impression de plans pour architectes, la création de logos, cartes de visite et sites vitrines, la mise en page de mémoires et rapports, des fournitures scolaires, des services digitaux et l'aide à l'achat en ligne.",
     "atouts": [
       {
         "titre": "Tout au même endroit",
@@ -49,7 +49,7 @@
       },
       {
         "question": "Quels services proposez-vous ?",
-        "reponse": "Impression et photocopie, grand format pour architectes, mise en page de mémoires et rapports, fournitures et impression pour écoles et lycées, services digitaux et IA, et achats en ligne."
+        "reponse": "Impression et photocopie, impression de plans pour architectes, création de logo, carte de visite, charte graphique et site vitrine, mise en page de mémoires et rapports, fournitures et impression pour écoles et lycées, services digitaux et IA, et achats en ligne."
       }
     ]
   },
@@ -127,6 +127,48 @@
         }
       ]
     },
+    "design": {
+      "name": "Logo, carte de visite et site vitrine",
+      "card": "Création de logo, charte graphique, cartes de visite et site vitrine pour votre commerce.",
+      "title": "Création logo, carte de visite, site vitrine Batna | Maktaba Warraqa",
+      "h1": "Création de logo, carte de visite, charte graphique et site vitrine à Batna",
+      "meta": "Création de logo, charte graphique, cartes de visite et site vitrine pour commerçants, artisans et professions libérales à Batna. WhatsApp 0773 58 99 54.",
+      "summary": "Maktaba Warraqa crée l'identité de votre commerce à Batna : logo, charte graphique (couleurs, polices, règles d'usage), cartes de visite, flyers et site vitrine. Nous imprimons ensuite vos cartes et supports en boutique, et nous pouvons relier votre site à votre fiche Google Business Profile pour que vos clients vous trouvent sur Google et Maps. Pour les commerçants, artisans, professions libérales et associations.",
+      "items": [
+        "Création de logo",
+        "Charte graphique : couleurs, polices et règles d'usage",
+        "Création et impression de cartes de visite",
+        "Flyers, affiches et menus aux couleurs de votre marque",
+        "Site vitrine en français et en arabe",
+        "Site relié à votre fiche Google Business Profile"
+      ],
+      "faq": [
+        {
+          "question": "Combien de propositions de logo recevez-vous ?",
+          "reponse": "Nous partons de vos idées et de votre activité, vous proposons des pistes puis ajustons celle que vous choisissez. Le nombre de pistes est fixé avec vous dans le devis."
+        },
+        {
+          "question": "Qu'est-ce qu'une charte graphique ?",
+          "reponse": "Un document court qui fixe vos couleurs, vos polices et la façon d'utiliser votre logo, pour que vos cartes, flyers, enseigne et site restent cohérents."
+        },
+        {
+          "question": "Imprimez-vous les cartes de visite que vous créez ?",
+          "reponse": "Oui. Nous créons la maquette puis imprimons vos cartes en boutique, Rue des frères Abbabsa à Batna."
+        },
+        {
+          "question": "Que contient un site vitrine ?",
+          "reponse": "Vos services, vos horaires, votre adresse avec plan, vos coordonnées et un bouton WhatsApp, en français et en arabe, avec les bases du référencement sur Google."
+        },
+        {
+          "question": "Le site sera-t-il relié à ma fiche Google ?",
+          "reponse": "Oui. Nous ajoutons le lien du site dans votre fiche Google Business Profile et le lien de la fiche sur le site, avec les mêmes nom, adresse et téléphone partout."
+        },
+        {
+          "question": "Comment demander un devis ?",
+          "reponse": "Par téléphone ou WhatsApp au 0773 58 99 54, ou directement en boutique."
+        }
+      ]
+    },
     "reports": {
       "name": "Mémoires et rapports",
       "card": "Mémoires, PFE, rapports, CV : nous soignons la mise en page.",
@@ -197,7 +239,7 @@
         "Ateliers IA pour élèves, étudiants et enseignants",
         "Design Canva : affiches, posts et présentations",
         "Fiche Google Business Profile pour commerçants",
-        "Logos, QR codes et cartes de visite pour commerçants"
+        "QR codes pour menus, réseaux sociaux et avis Google"
       ],
       "faq": [
         {
