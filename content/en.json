@@ -85,32 +85,45 @@
       ]
     },
     "largeformat": {
-      "name": "Large format for architects",
-      "card": "A2, A1 and A0 plans, large format scanning and competition files.",
-      "title": "Large Format Printing for Architects in Batna | Maktaba",
-      "h1": "Large format printing for architects in Batna",
-      "meta": "A2, A1 and A0 plan printing, large format scanning, competition file binding, tracing paper and model supplies in Batna. Call 0773 58 99 54.",
-      "summary": "We print and scan plans in large format (A2, A1 and A0) for architects, design offices and architecture students in Batna. We also bind competition files and supply tracing paper, foam board and model-making supplies.",
+      "name": "Plan printing for architects",
+      "card": "A0, A1, A2 and A3 plan printing in colour or black and white, folding, scanning and competition files.",
+      "title": "Architectural Plan Printing in Batna: A0, A1 | Maktaba Warraqa",
+      "h1": "Architectural plan printing in Batna: A0, A1, A2 and A3",
+      "meta": "A0, A1, A2 and A3 plan printing in black and white or colour, A4 folding, large format scanning and competition files in Batna. WhatsApp 0773 58 99 54.",
+      "summary": "Maktaba Warraqa prints your architectural plans in Batna, from A3 to A0, in black and white or colour: technical drawings, presentation boards, final-year project boards and competition files. Send your PDFs at scale on WhatsApp, we confirm the turnaround, and you collect your prints folded, rolled or bound. We work for architects, design offices and architecture students.",
       "items": [
-        "Plan printing in A2, A1 and A0",
-        "Large format scanning",
-        "Competition file binding",
-        "Tracing paper",
-        "Foam board",
-        "Model-making supplies"
+        "A0, A1, A2 and A3 plan printing",
+        "Black and white technical drawings",
+        "Colour presentation and final-year boards",
+        "Plans folded to A4, or delivered rolled",
+        "Large format plan scanning",
+        "Competition file printing and binding",
+        "Tracing paper, foam board and model-making supplies"
       ],
       "faq": [
         {
-          "question": "Which large formats do you print?",
-          "reponse": "From A2 to A0. Send your plan as a PDF at scale, on WhatsApp or on a USB stick."
+          "question": "Which plan sizes do you print?",
+          "reponse": "From A3 to A0: A0 (841 x 1189 mm), A1 (594 x 841 mm), A2 (420 x 594 mm) and A3 (297 x 420 mm), in black and white or colour."
         },
         {
-          "question": "Can you bind a competition file?",
-          "reponse": "Yes, we bind and format competition files."
+          "question": "Which file should I send?",
+          "reponse": "A PDF exported at scale, at the exact sheet size, from AutoCAD, ArchiCAD, Revit or SketchUp. Send it on WhatsApp at 0773 58 99 54 or bring a USB stick."
         },
         {
-          "question": "Do you stock tracing paper and foam board?",
-          "reponse": "Yes, we offer tracing paper, foam board and model-making supplies."
+          "question": "Can you fold my plans to A4?",
+          "reponse": "Yes, we fold plans to A4 with the title block visible, ready for filing. We can also deliver them rolled."
+        },
+        {
+          "question": "Do you print architecture competition files?",
+          "reponse": "Yes: boards, written documents, folding and binding, following the format required by the competition brief."
+        },
+        {
+          "question": "Do you work with architecture students?",
+          "reponse": "Yes. We print project and final-year boards and sell tracing paper, foam board and model-making supplies."
+        },
+        {
+          "question": "Do you scan plans?",
+          "reponse": "Yes, we scan large format plans for archiving or editing."
         }
       ]
     },

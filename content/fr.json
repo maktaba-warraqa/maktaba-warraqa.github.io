@@ -85,32 +85,45 @@
       ]
     },
     "largeformat": {
-      "name": "Grand format pour architectes",
-      "card": "Plans A2, A1, A0, scan grand format et dossiers de concours.",
-      "title": "Impression grand format architectes à Batna | Maktaba Warraqa",
-      "h1": "Impression grand format pour architectes à Batna",
-      "meta": "Tirage de plans A2, A1 et A0, scan grand format, reliure de dossiers de concours, papier calque et fournitures de maquette à Batna. 0773 58 99 54.",
-      "summary": "Nous imprimons et scannons les plans en grand format (A2, A1 et A0) pour les architectes, bureaux d'études et étudiants en architecture de Batna. Nous relions aussi les dossiers de concours et fournissons papier calque, carton mousse et fournitures de maquette.",
+      "name": "Impression de plans pour architectes",
+      "card": "Tirage de plans A0, A1, A2 et A3, couleur ou noir et blanc, pliage, scan et dossiers de concours.",
+      "title": "Impression plan architecte à Batna : A0, A1, A2 | Maktaba Warraqa",
+      "h1": "Impression de plans pour architectes à Batna : A0, A1, A2 et A3",
+      "meta": "Tirage de plans A0, A1, A2 et A3 en noir et blanc ou couleur, pliage A4, scan grand format et dossiers de concours à Batna. WhatsApp 0773 58 99 54.",
+      "summary": "Maktaba Warraqa imprime vos plans d'architecture à Batna, du A3 au A0, en noir et blanc ou en couleur : plans techniques, planches de rendu, planches de PFE et dossiers de concours. Envoyez vos PDF à l'échelle par WhatsApp, nous vous confirmons le délai et vous récupérez vos tirages pliés, roulés ou reliés. Nous travaillons pour les architectes, les bureaux d'études et les étudiants en architecture.",
       "items": [
-        "Tirage de plans A2, A1 et A0",
-        "Scan grand format",
-        "Reliure de dossiers de concours",
-        "Papier calque",
-        "Carton mousse",
-        "Fournitures de maquette"
+        "Tirage de plans A0, A1, A2 et A3",
+        "Plans techniques en noir et blanc",
+        "Planches de rendu et de PFE en couleur",
+        "Pliage des plans au format A4, ou plans roulés",
+        "Scan de plans grand format",
+        "Impression et reliure de dossiers de concours",
+        "Papier calque, carton mousse et fournitures de maquette"
       ],
       "faq": [
         {
-          "question": "Quels formats grand format imprimez-vous ?",
-          "reponse": "Du A2 au A0. Envoyez votre plan en PDF à l'échelle, par WhatsApp ou sur clé USB."
+          "question": "Quels formats de plans imprimez-vous ?",
+          "reponse": "Du A3 au A0 : A0 (841 x 1189 mm), A1 (594 x 841 mm), A2 (420 x 594 mm) et A3 (297 x 420 mm), en noir et blanc ou en couleur."
         },
         {
-          "question": "Pouvez-vous relier un dossier de concours ?",
-          "reponse": "Oui, nous assurons la reliure et la mise en forme des dossiers de concours."
+          "question": "Quel fichier faut-il envoyer ?",
+          "reponse": "Un PDF exporté à l'échelle, au format exact de la planche, depuis AutoCAD, ArchiCAD, Revit ou SketchUp. Envoyez-le par WhatsApp au 0773 58 99 54 ou sur clé USB."
         },
         {
-          "question": "Avez-vous du papier calque et du carton mousse ?",
-          "reponse": "Oui, nous proposons papier calque, carton mousse et fournitures de maquette."
+          "question": "Pouvez-vous plier mes plans au format A4 ?",
+          "reponse": "Oui, nous plions les plans au format A4 avec le cartouche visible, prêts à être classés ou insérés dans un dossier. Nous pouvons aussi les livrer roulés."
+        },
+        {
+          "question": "Imprimez-vous les dossiers de concours d'architecture ?",
+          "reponse": "Oui : planches, pièces écrites, pliage et reliure, en respectant le format demandé par le cahier des charges du concours."
+        },
+        {
+          "question": "Travaillez-vous avec les étudiants en architecture ?",
+          "reponse": "Oui. Nous imprimons les planches de projets et de PFE et vendons papier calque, carton mousse et fournitures de maquette."
+        },
+        {
+          "question": "Faites-vous le scan de plans ?",
+          "reponse": "Oui, nous scannons les plans grand format pour les archiver ou les retravailler."
         }
       ]
     },
