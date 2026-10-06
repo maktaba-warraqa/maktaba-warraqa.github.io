@@ -67,7 +67,7 @@
         "Document scanning",
         "Lamination",
         "Thermal and spiral binding",
-        "Business cards, flyers and posters"
+        "Flyers and posters"
       ],
       "faq": [
         {
@@ -127,45 +127,139 @@
         }
       ]
     },
-    "design": {
-      "name": "Logo, business cards and websites",
-      "card": "Logo design, brand guidelines, business cards and a showcase website for your business.",
-      "title": "Logo, Business Card & Website Design in Batna | Maktaba Warraqa",
-      "h1": "Logo, business card, brand guidelines and website design in Batna",
-      "meta": "Logo design, brand guidelines, business cards and showcase websites for shops, craftsmen and professionals in Batna. WhatsApp 0773 58 99 54.",
-      "summary": "Maktaba Warraqa creates your business identity in Batna: logo, brand guidelines (colours, fonts, usage rules), business cards, flyers and a showcase website. We then print your cards and materials in the shop, and connect your website to your Google Business Profile so customers find you on Google Search and Maps. For shops, craftsmen, professionals and associations.",
+    "logo": {
+      "name": "Logo design",
+      "card": "A unique logo for your business, in colour, black and white and for social media.",
+      "title": "Logo Design in Batna | Maktaba Warraqa",
+      "h1": "Logo design in Batna",
+      "meta": "Logo design for shops, craftsmen, professionals and associations in Batna. Files for print, signage and social media. Call 0773 58 99 54.",
+      "summary": "Maktaba Warraqa designs your business logo in Batna. We start from your activity, your customers and your ideas, propose several directions, then refine the one you choose. You receive your logo in colour, black and white and a social media version, ready for business cards, signage, flyers and your website.",
       "items": [
-        "Logo design",
-        "Brand guidelines: colours, fonts and usage rules",
-        "Business card design and printing",
-        "Flyers, posters and menus in your brand colours",
-        "Showcase website in French and Arabic",
-        "Website connected to your Google Business Profile"
+        "Discussion about your business and ideas",
+        "Logo directions, then refinements",
+        "Colour, black and white and single-colour versions",
+        "Square version for social media and WhatsApp",
+        "Files for print, signage and web",
+        "Logo in French, Arabic or bilingual"
       ],
       "faq": [
         {
           "question": "How many logo proposals do I get?",
-          "reponse": "We start from your ideas and your business, propose several directions, then refine the one you choose. The number of directions is set with you in the quote."
+          "reponse": "We propose several directions, then refine the one you choose. The number of directions and revisions is set with you in the quote."
         },
         {
-          "question": "What are brand guidelines?",
-          "reponse": "A short document setting your colours, fonts and how to use your logo, so your cards, flyers, sign and website stay consistent."
+          "question": "Can the logo be in Arabic and French?",
+          "reponse": "Yes, in Arabic, French or bilingual, with lettering that reads well in both scripts."
         },
         {
-          "question": "Do you print the business cards you design?",
-          "reponse": "Yes. We design the layout and print your cards in the shop, Rue des frères Abbabsa in Batna."
-        },
-        {
-          "question": "What does a showcase website include?",
-          "reponse": "Your services, opening hours, address with map, contact details and a WhatsApp button, in French and Arabic, with the basics of Google visibility."
-        },
-        {
-          "question": "Will the website be connected to my Google profile?",
-          "reponse": "Yes. We add the website link to your Google Business Profile and the profile link to the website, with the same name, address and phone everywhere."
+          "question": "Which formats will I receive?",
+          "reponse": "A print file (cards, flyers, signage) and images for the web, social media and WhatsApp."
         },
         {
           "question": "How do I get a quote?",
-          "reponse": "By phone or WhatsApp at 0773 58 99 54, or in the shop."
+          "reponse": "By phone or WhatsApp at 0773 58 99 54, or in the shop, Rue des frères Abbabsa in Batna."
+        }
+      ]
+    },
+    "branding": {
+      "name": "Brand guidelines",
+      "card": "Colours, fonts and logo usage rules for consistent materials everywhere.",
+      "title": "Brand Guidelines in Batna | Maktaba Warraqa",
+      "h1": "Brand guidelines design in Batna",
+      "meta": "Brand guidelines for shops and companies in Batna: colours, fonts, logo usage rules and material templates. WhatsApp 0773 58 99 54.",
+      "summary": "Brand guidelines set your colours, your fonts and how to use your logo. With them, your business cards, flyers, signage, posts and website keep the same look, even when different people make them. Maktaba Warraqa creates your guidelines in Batna, from your existing logo or a new one.",
+      "items": [
+        "Colour palette with print and web codes",
+        "Font choice for French and Arabic",
+        "Logo usage rules: sizes, margins, backgrounds",
+        "Examples: card, flyer, social post",
+        "Reusable templates for your materials",
+        "Short document, easy to share"
+      ],
+      "faq": [
+        {
+          "question": "What are brand guidelines for?",
+          "reponse": "Keeping the same look on all your materials: cards, flyers, signage, social media and website, so customers recognise you faster."
+        },
+        {
+          "question": "I already have a logo, can you make the guidelines?",
+          "reponse": "Yes, we start from your existing logo, or refine it if needed."
+        },
+        {
+          "question": "What do the guidelines include?",
+          "reponse": "Colours with their codes, fonts, logo usage rules and examples on your materials."
+        },
+        {
+          "question": "How do I get a quote?",
+          "reponse": "By phone or WhatsApp at 0773 58 99 54, or in the shop, Rue des frères Abbabsa in Batna."
+        }
+      ]
+    },
+    "cards": {
+      "name": "Business cards",
+      "card": "Business card design and printing in the shop, single or double sided.",
+      "title": "Business Cards in Batna: Design and Printing | Maktaba Warraqa",
+      "h1": "Business card design and printing in Batna",
+      "meta": "Business card design and printing in Batna, in French and Arabic, single or double sided, with a WhatsApp or Google QR code. Call 0773 58 99 54.",
+      "summary": "Maktaba Warraqa designs and prints your business cards in Batna. Send your logo and details, or start from scratch: we prepare the layout in French, Arabic or both, you approve it, and we print your cards in the shop. We can add a QR code to your WhatsApp, website or Google profile.",
+      "items": [
+        "Layout in French, Arabic or bilingual",
+        "Single or double sided",
+        "Printed in the shop",
+        "QR code to WhatsApp, website or Google profile",
+        "Quick reprints from your layout",
+        "Cards matching your logo and guidelines"
+      ],
+      "faq": [
+        {
+          "question": "Can you design my card if I have no logo?",
+          "reponse": "Yes. We can make a simple card with your name and details, or design your logo first."
+        },
+        {
+          "question": "Can I bring my own design?",
+          "reponse": "Yes. Send it as a PDF on WhatsApp and we check it is ready to print."
+        },
+        {
+          "question": "What should a business card include?",
+          "reponse": "Name, activity, phone, WhatsApp, address and a QR code to your website or Google profile are enough in most cases."
+        },
+        {
+          "question": "How do I order?",
+          "reponse": "By phone or WhatsApp at 0773 58 99 54, or in the shop, Rue des frères Abbabsa in Batna."
+        }
+      ]
+    },
+    "website": {
+      "name": "Showcase website",
+      "card": "A showcase website in French and Arabic, connected to your Google profile, with a WhatsApp button.",
+      "title": "Website Design in Batna | Maktaba Warraqa",
+      "h1": "Showcase website design in Batna",
+      "meta": "Showcase websites for shops and professionals in Batna: French and Arabic, mobile friendly, WhatsApp button, connected to your Google profile. 0773 58 99 54.",
+      "summary": "Maktaba Warraqa builds your business showcase website in Batna: your services, opening hours, address with map, contact details and a WhatsApp button, in French and Arabic. The site is fast on mobile, built on Google search basics, and connected to your Google Business Profile so customers find you on Google Search and Maps.",
+      "items": [
+        "Website in French and Arabic",
+        "Services, hours, address and map pages",
+        "Call and WhatsApp buttons",
+        "Fast and readable on mobile",
+        "Google search basics",
+        "Connected to your Google Business Profile"
+      ],
+      "faq": [
+        {
+          "question": "What does a showcase website include?",
+          "reponse": "A presentation of your business, services, opening hours, address with map and contact details, with call and WhatsApp buttons."
+        },
+        {
+          "question": "Will the site show up on Google?",
+          "reponse": "We build it on search basics and connect it to your Google Business Profile, with the same name, address and phone everywhere."
+        },
+        {
+          "question": "Can I edit my website?",
+          "reponse": "Yes. We can give you a simple interface to change your texts and hours, or handle updates for you."
+        },
+        {
+          "question": "How do I get a quote?",
+          "reponse": "By phone or WhatsApp at 0773 58 99 54, or in the shop, Rue des frères Abbabsa in Batna."
         }
       ]
     },

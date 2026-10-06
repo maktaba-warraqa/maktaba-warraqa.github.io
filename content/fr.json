@@ -67,7 +67,7 @@
         "Scan de documents",
         "Plastification",
         "Reliure thermique et spirale",
-        "Cartes de visite, flyers et affiches"
+        "Flyers et affiches"
       ],
       "faq": [
         {
@@ -127,45 +127,139 @@
         }
       ]
     },
-    "design": {
-      "name": "Logo, carte de visite et site vitrine",
-      "card": "Création de logo, charte graphique, cartes de visite et site vitrine pour votre commerce.",
-      "title": "Création logo, carte de visite, site vitrine Batna | Maktaba Warraqa",
-      "h1": "Création de logo, carte de visite, charte graphique et site vitrine à Batna",
-      "meta": "Création de logo, charte graphique, cartes de visite et site vitrine pour commerçants, artisans et professions libérales à Batna. WhatsApp 0773 58 99 54.",
-      "summary": "Maktaba Warraqa crée l'identité de votre commerce à Batna : logo, charte graphique (couleurs, polices, règles d'usage), cartes de visite, flyers et site vitrine. Nous imprimons ensuite vos cartes et supports en boutique, et nous pouvons relier votre site à votre fiche Google Business Profile pour que vos clients vous trouvent sur Google et Maps. Pour les commerçants, artisans, professions libérales et associations.",
+    "logo": {
+      "name": "Création de logo",
+      "card": "Un logo unique pour votre commerce, livré en couleur, noir et blanc et pour les réseaux sociaux.",
+      "title": "Création de logo à Batna | Maktaba Warraqa",
+      "h1": "Création de logo à Batna",
+      "meta": "Création de logo pour commerces, artisans, professions libérales et associations à Batna. Fichiers pour impression, enseigne et réseaux sociaux. 0773 58 99 54.",
+      "summary": "Maktaba Warraqa crée le logo de votre commerce à Batna. Nous partons de votre activité, de vos clients et de vos idées, vous proposons des pistes, puis ajustons celle que vous choisissez. Vous recevez votre logo en couleur, en noir et blanc et en version adaptée aux réseaux sociaux, prêt pour vos cartes de visite, votre enseigne, vos flyers et votre site.",
       "items": [
-        "Création de logo",
-        "Charte graphique : couleurs, polices et règles d'usage",
-        "Création et impression de cartes de visite",
-        "Flyers, affiches et menus aux couleurs de votre marque",
-        "Site vitrine en français et en arabe",
-        "Site relié à votre fiche Google Business Profile"
+        "Échange sur votre activité et vos idées",
+        "Pistes de logo puis ajustements",
+        "Versions couleur, noir et blanc et monochrome",
+        "Version carrée pour réseaux sociaux et WhatsApp",
+        "Fichiers pour impression, enseigne et web",
+        "Logo en français, en arabe ou bilingue"
       ],
       "faq": [
         {
           "question": "Combien de propositions de logo recevez-vous ?",
-          "reponse": "Nous partons de vos idées et de votre activité, vous proposons des pistes puis ajustons celle que vous choisissez. Le nombre de pistes est fixé avec vous dans le devis."
+          "reponse": "Nous vous proposons plusieurs pistes puis ajustons celle que vous choisissez. Le nombre de pistes et de retouches est fixé avec vous dans le devis."
         },
         {
-          "question": "Qu'est-ce qu'une charte graphique ?",
-          "reponse": "Un document court qui fixe vos couleurs, vos polices et la façon d'utiliser votre logo, pour que vos cartes, flyers, enseigne et site restent cohérents."
+          "question": "Le logo peut-il être en arabe et en français ?",
+          "reponse": "Oui, en arabe, en français ou bilingue, avec une typographie lisible dans les deux écritures."
         },
         {
-          "question": "Imprimez-vous les cartes de visite que vous créez ?",
-          "reponse": "Oui. Nous créons la maquette puis imprimons vos cartes en boutique, Rue des frères Abbabsa à Batna."
-        },
-        {
-          "question": "Que contient un site vitrine ?",
-          "reponse": "Vos services, vos horaires, votre adresse avec plan, vos coordonnées et un bouton WhatsApp, en français et en arabe, avec les bases du référencement sur Google."
-        },
-        {
-          "question": "Le site sera-t-il relié à ma fiche Google ?",
-          "reponse": "Oui. Nous ajoutons le lien du site dans votre fiche Google Business Profile et le lien de la fiche sur le site, avec les mêmes nom, adresse et téléphone partout."
+          "question": "Dans quels formats recevrai-je mon logo ?",
+          "reponse": "Un fichier pour l'impression (cartes, flyers, enseigne) et des images pour le web, les réseaux sociaux et WhatsApp."
         },
         {
           "question": "Comment demander un devis ?",
-          "reponse": "Par téléphone ou WhatsApp au 0773 58 99 54, ou directement en boutique."
+          "reponse": "Par téléphone ou WhatsApp au 0773 58 99 54, ou en boutique, Rue des frères Abbabsa à Batna."
+        }
+      ]
+    },
+    "branding": {
+      "name": "Charte graphique",
+      "card": "Couleurs, polices et règles d'usage du logo pour des supports cohérents partout.",
+      "title": "Charte graphique à Batna | Maktaba Warraqa",
+      "h1": "Création de charte graphique à Batna",
+      "meta": "Charte graphique pour commerces et entreprises à Batna : couleurs, polices, règles d'usage du logo et modèles de supports. WhatsApp 0773 58 99 54.",
+      "summary": "Une charte graphique fixe les couleurs, les polices et la façon d'utiliser votre logo. Avec elle, vos cartes de visite, flyers, enseigne, publications et site gardent la même image, même si plusieurs personnes les réalisent. Maktaba Warraqa crée votre charte à Batna, à partir de votre logo existant ou d'un nouveau logo.",
+      "items": [
+        "Palette de couleurs avec codes pour l'impression et le web",
+        "Choix des polices en français et en arabe",
+        "Règles d'usage du logo : tailles, marges, fonds",
+        "Exemples d'application : carte, flyer, publication",
+        "Modèles réutilisables pour vos supports",
+        "Document court et facile à transmettre"
+      ],
+      "faq": [
+        {
+          "question": "À quoi sert une charte graphique ?",
+          "reponse": "À garder la même image sur tous vos supports : cartes, flyers, enseigne, réseaux sociaux et site. Vos clients vous reconnaissent plus vite."
+        },
+        {
+          "question": "J'ai déjà un logo, pouvez-vous faire la charte ?",
+          "reponse": "Oui, nous partons de votre logo existant, ou nous le retouchons si besoin."
+        },
+        {
+          "question": "Que contient la charte ?",
+          "reponse": "Les couleurs avec leurs codes, les polices, les règles d'usage du logo et des exemples d'application sur vos supports."
+        },
+        {
+          "question": "Comment demander un devis ?",
+          "reponse": "Par téléphone ou WhatsApp au 0773 58 99 54, ou en boutique, Rue des frères Abbabsa à Batna."
+        }
+      ]
+    },
+    "cards": {
+      "name": "Cartes de visite",
+      "card": "Création et impression de cartes de visite en boutique, recto ou recto verso.",
+      "title": "Cartes de visite à Batna : création et impression | Maktaba Warraqa",
+      "h1": "Création et impression de cartes de visite à Batna",
+      "meta": "Création et impression de cartes de visite à Batna, en français et en arabe, recto ou recto verso, avec QR code WhatsApp ou Google. 0773 58 99 54.",
+      "summary": "Maktaba Warraqa crée et imprime vos cartes de visite à Batna. Envoyez votre logo et vos coordonnées, ou partez de zéro : nous préparons la maquette en français, en arabe ou bilingue, vous la validez, puis nous imprimons vos cartes en boutique. Nous pouvons ajouter un QR code vers votre WhatsApp, votre site ou votre fiche Google.",
+      "items": [
+        "Maquette en français, en arabe ou bilingue",
+        "Recto ou recto verso",
+        "Impression en boutique",
+        "QR code vers WhatsApp, site ou fiche Google",
+        "Réimpression rapide à partir de votre maquette",
+        "Cartes assorties à votre logo et votre charte"
+      ],
+      "faq": [
+        {
+          "question": "Pouvez-vous créer ma carte si je n'ai pas de logo ?",
+          "reponse": "Oui. Nous pouvons faire une carte simple avec votre nom et vos coordonnées, ou créer d'abord votre logo."
+        },
+        {
+          "question": "Puis-je apporter ma propre maquette ?",
+          "reponse": "Oui. Envoyez-la en PDF par WhatsApp, nous vérifions qu'elle est prête pour l'impression."
+        },
+        {
+          "question": "Quelles informations mettre sur une carte de visite ?",
+          "reponse": "Nom, activité, téléphone, WhatsApp, adresse et un QR code vers votre site ou votre fiche Google suffisent dans la plupart des cas."
+        },
+        {
+          "question": "Comment commander ?",
+          "reponse": "Par téléphone ou WhatsApp au 0773 58 99 54, ou en boutique, Rue des frères Abbabsa à Batna."
+        }
+      ]
+    },
+    "website": {
+      "name": "Création de site vitrine",
+      "card": "Site vitrine en français et en arabe, relié à votre fiche Google, avec bouton WhatsApp.",
+      "title": "Création de site vitrine à Batna | Maktaba Warraqa",
+      "h1": "Création de site vitrine à Batna",
+      "meta": "Création de site vitrine pour commerces et professionnels à Batna : français et arabe, mobile, bouton WhatsApp, relié à votre fiche Google. 0773 58 99 54.",
+      "summary": "Maktaba Warraqa crée le site vitrine de votre commerce à Batna : vos services, vos horaires, votre adresse avec plan, vos coordonnées et un bouton WhatsApp, en français et en arabe. Le site est rapide sur mobile, construit avec les bases du référencement Google, et relié à votre fiche Google Business Profile pour que vos clients vous trouvent sur Google et Maps.",
+      "items": [
+        "Site en français et en arabe",
+        "Pages services, horaires, adresse et plan",
+        "Bouton d'appel et bouton WhatsApp",
+        "Rapide et lisible sur mobile",
+        "Bases du référencement Google",
+        "Lien avec votre fiche Google Business Profile"
+      ],
+      "faq": [
+        {
+          "question": "Que contient un site vitrine ?",
+          "reponse": "Une présentation de votre activité, vos services, vos horaires, votre adresse avec plan et vos coordonnées, avec un bouton d'appel et WhatsApp."
+        },
+        {
+          "question": "Le site sera-t-il visible sur Google ?",
+          "reponse": "Nous construisons le site avec les bases du référencement et le relions à votre fiche Google Business Profile, avec les mêmes nom, adresse et téléphone partout."
+        },
+        {
+          "question": "Pourrai-je modifier mon site ?",
+          "reponse": "Oui. Nous pouvons vous donner une interface simple pour changer vos textes et horaires, ou nous occuper des mises à jour."
+        },
+        {
+          "question": "Comment demander un devis ?",
+          "reponse": "Par téléphone ou WhatsApp au 0773 58 99 54, ou en boutique, Rue des frères Abbabsa à Batna."
         }
       ]
     },
