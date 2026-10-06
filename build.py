@@ -496,6 +496,7 @@ def build_service(lang, key):
         f'<div class="cta">{buttons(lang)}</div><p class="note">{esc(u["ask"])}</p></div></div></section>'
         f'<section><div class="wrap"><h2>{esc(u["offer"])}</h2><ul class="items">{items}</ul></div></section>'
         f'{faq_section(lang, s["faq"], alt=True)}'
+        f"{related_posts(lang, key)}"
         f'<section><div class="wrap"><h2>{esc(u["others"])}</h2><ul class="grid">{others}</ul></div></section>'
         f"{visit_section(lang)}"
     )
@@ -550,6 +551,16 @@ def post_cards(posts, lang):
         f'<p><time datetime="{x["date"]}">{x["date"]}</time></p>'
         f'<p>{esc(x["summary"])}</p><span class="more" aria-hidden="true">{esc(u["read"])} {u["arrow"]}</span></div></li>'
         for x in posts
+    )
+
+
+def related_posts(lang, key):
+    posts = [x for x in posts_in(lang) if x["service"] == key][:6]
+    if not posts:
+        return ""
+    return (
+        f'<section><div class="wrap"><h2>{esc(UI[lang]["related"])}</h2>'
+        f'<ul class="grid">{post_cards(posts, lang)}</ul></div></section>'
     )
 
 

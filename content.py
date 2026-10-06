@@ -203,9 +203,9 @@ SVC = {
 
 # ---------- blog ----------
 BLOG_UI = {
-    "fr": {"blog": "Blog", "blog_title": "Conseils et actualités", "blog_lead": "Nos conseils pour vos impressions, mémoires, plans et démarches en ligne à Batna.", "latest": "Derniers articles", "read": "Lire l'article", "published": "Publié le", "all_posts": "Tous les articles"},
-    "en": {"blog": "Blog", "blog_title": "Tips and news", "blog_lead": "Our tips for printing, thesis formatting, plans and online services in Batna.", "latest": "Latest articles", "read": "Read the article", "published": "Published on", "all_posts": "All articles"},
-    "ar": {"blog": "المدونة", "blog_title": "نصائح وأخبار", "blog_lead": "نصائحنا للطباعة والمذكرات والمخططات والخدمات الرقمية في باتنة.", "latest": "آخر المقالات", "read": "اقرأ المقال", "published": "نُشر في", "all_posts": "كل المقالات"},
+    "fr": {"blog": "Blog", "blog_title": "Conseils et actualités", "blog_lead": "Nos conseils pour vos impressions, mémoires, plans et démarches en ligne à Batna.", "latest": "Derniers articles", "read": "Lire l'article", "published": "Publié le", "all_posts": "Tous les articles", "related": "Nos conseils sur ce sujet"},
+    "en": {"blog": "Blog", "blog_title": "Tips and news", "blog_lead": "Our tips for printing, thesis formatting, plans and online services in Batna.", "latest": "Latest articles", "read": "Read the article", "published": "Published on", "all_posts": "All articles", "related": "Our tips on this topic"},
+    "ar": {"blog": "المدونة", "blog_title": "نصائح وأخبار", "blog_lead": "نصائحنا للطباعة والمذكرات والمخططات والخدمات الرقمية في باتنة.", "latest": "آخر المقالات", "read": "اقرأ المقال", "published": "نُشر في", "all_posts": "كل المقالات", "related": "نصائح حول هذا الموضوع"},
 }
 for _lang in LANGS:
     UI[_lang].update(BLOG_UI[_lang])
@@ -239,6 +239,7 @@ def _posts():
             "summary": (p.get("resume") or "").strip(),
             "image": (p.get("image") or "").strip(),
             "html": p["contenu"],
+            "service": p.get("service") or "",
         })
     out.sort(key=lambda x: x["date"], reverse=True)
     return out

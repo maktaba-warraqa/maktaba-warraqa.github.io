@@ -32,6 +32,17 @@ content:
             - { value: fr, label: "Français" }
             - { value: ar, label: "العربية" }
             - { value: en, label: "English" }
+      - name: service
+        label: "Service lié (l'article s'affichera sur sa page) / الخدمة"
+        type: select
+        options:
+          values:
+            - { value: print, label: "Impression et photocopie" }
+            - { value: largeformat, label: "Grand format / plans architectes" }
+            - { value: reports, label: "Mémoires et rapports" }
+            - { value: school, label: "Écoles et lycées" }
+            - { value: digital, label: "Services digitaux et IA" }
+            - { value: shopping, label: "Achats en ligne" }
       - { name: date, label: "Date / التاريخ", type: date, required: true }
       - { name: resume, label: "Résumé (affiché dans Google, 155 caractères max) / ملخص", type: text, required: true, options: { maxlength: 160 } }
       - { name: image, label: "Image principale (facultatif) / صورة", type: image, description: "Photo horizontale de préférence. Elle est réduite automatiquement." }
