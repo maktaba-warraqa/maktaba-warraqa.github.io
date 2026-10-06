@@ -20,6 +20,8 @@ Non-technical editing: Pages CMS (https://app.pagescms.org), configured in `.pag
 Editable text lives in `content/` (boutique.json, fr.json, en.json, ar.json). Each save is a commit on main and the site rebuilds in about a minute. If a build fails, the previous version stays online.
 Interface labels, URL slugs and the service list stay in `content.py` (code only).
 
+Blog: one JSON file per article in `content/blog/` (one language per article), images in `assets/blog/` (resized at build with Pillow). Pages are generated at `/blog/`, `/en/blog/`, `/ar/blog/` only for languages that have articles, with BlogPosting JSON-LD, sitemap and llms.txt entries. Article HTML is sanitized at build (`blog.py`).
+
 Preview locally:
 
 ```

@@ -11,7 +11,8 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
-from content import BIZ, HOME, LANG_LABEL, LANG_SHORT, LANGS, LOCALE, SLUGS, SVC, SVC_ORDER, UI
+from content import BIZ, HOME, LANG_LABEL, LANG_SHORT, LANGS, LOCALE, POSTS, SLUGS, SVC, SVC_ORDER, UI
+from blog import clean_html, optimize_images
 
 ROOT = Path(__file__).parent
 ap = argparse.ArgumentParser()
@@ -46,6 +47,24 @@ def home_path(lang):
 
 def svc_path(lang, key):
     return f"{prefix(lang)}/{SLUGS[key][lang]}/"
+
+
+OG_SIZE = '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+
+
+def blog_path(lang):
+    return f"{prefix(lang)}/blog/"
+
+
+def post_path(post):
+    return f"{blog_path(post['lang'])}{post['slug']}/"
+
+
+def posts_in(lang):
+    return [x for x in POSTS if x["lang"] == lang]
+
+
+BLOG_LANGS = [l for l in LANGS if posts_in(l)]
 
 
 def href(path):
@@ -173,6 +192,14 @@ body{padding-bottom:58px}
 .bar a:first-child{background:var(--am);color:var(--ink)}
 }
 @media(max-width:480px){.why{grid-template-columns:1fr}}
+.post{max-width:72ch;font-size:19px;line-height:1.65}
+.post h2{font-size:30px;margin:1.4em 0 .4em}
+.post h3{font-size:23px;margin:1.2em 0 .3em}
+.post img{max-width:100%;height:auto;border-radius:14px}
+.post .cover{margin:0 0 28px}
+.post table{border-collapse:collapse;width:100%}
+.post td,.post th{border:1px solid var(--line);padding:8px}
+.post blockquote{margin:1em 0;padding-inline-start:18px;border-inline-start:6px solid var(--or)}
 """
 CSS = re.sub(r"\n+", "\n", CSS).strip()
 
@@ -198,6 +225,10 @@ def other_lang_paths(page):
     """page = ('home',) or ('svc', key) -> dict lang -> path"""
     if page[0] == "home":
         return {l: home_path(l) for l in LANGS}
+    if page[0] == "blog":
+        return {l: blog_path(l) for l in BLOG_LANGS}
+    if page[0] == "post":
+        return {page[1]["lang"]: post_path(page[1])}
     return {l: svc_path(l, page[1]) for l in LANGS}
 
 
@@ -207,7 +238,7 @@ def lang_switch(lang, page):
     for l in LANGS:
         cur = ' aria-current="page"' if l == lang else ""
         items.append(
-            f'<li><a href="{href(paths[l])}" lang="{l}" hreflang="{l}" aria-label="{esc(LANG_LABEL[l])}"{cur}>{LANG_SHORT[l]}</a></li>'
+            f'<li><a href="{href(paths.get(l, home_path(l)))}" lang="{l}" hreflang="{l}" aria-label="{esc(LANG_LABEL[l])}"{cur}>{LANG_SHORT[l]}</a></li>'
         )
     return f'<ul class="langs">{"".join(items)}</ul>'
 
@@ -283,12 +314,15 @@ def ld_script(graph):
     return f'<script type="application/ld+json">{txt}</script>'
 
 
-def head(lang, page, title, meta, graph):
+def head(lang, page, title, meta, graph, og_type="website", image=None):
     paths = other_lang_paths(page)
     own = paths[lang]
-    alts = "".join(
-        f'<link rel="alternate" hreflang="{l}" href="{url(paths[l])}">' for l in LANGS
-    ) + f'<link rel="alternate" hreflang="x-default" href="{url(paths["fr"])}">'
+    alts = ""
+    if len(paths) > 1:
+        alts = "".join(
+            f'<link rel="alternate" hreflang="{l}" href="{url(paths[l])}">' for l in LANGS if l in paths
+        ) + f'<link rel="alternate" hreflang="x-default" href="{url(paths.get("fr", own))}">'
+    image = image or f"{SITE}/assets/img/og.jpg"
     others = "".join(
         f'<meta property="og:locale:alternate" content="{LOCALE[l]}">' for l in LANGS if l != lang
     )
@@ -309,13 +343,13 @@ def head(lang, page, title, meta, graph):
         '<meta name="google-site-verification" content="c1eWeyqJIzoh718gMN-DgbD9hQAGho_J9hb_zIfSAcM">'
         f'<link rel="canonical" href="{url(own)}">'
         f"{alts}"
-        f'<meta property="og:type" content="website">'
+        f'<meta property="og:type" content="{og_type}">'
         f'<meta property="og:site_name" content="{esc(BIZ["brand"])}">'
         f'<meta property="og:title" content="{esc(title)}">'
         f'<meta property="og:description" content="{esc(meta)}">'
         f'<meta property="og:url" content="{url(own)}">'
-        f'<meta property="og:image" content="{SITE}/assets/img/og.jpg">'
-        '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+        f'<meta property="og:image" content="{image}">'
+        f'{OG_SIZE if image.endswith("/og.jpg") else ""}'
         f'<meta property="og:locale" content="{LOCALE[lang]}">{others}'
         '<meta name="twitter:card" content="summary_large_image">'
         f'<link rel="icon" href="{BASE}/favicon.ico" sizes="48x48">'
@@ -363,6 +397,8 @@ def footer(lang):
     svc_links = "".join(
         f'<li><a href="{href(svc_path(lang, k))}">{esc(SVC[lang][k]["name"])}</a></li>' for k in SVC_ORDER
     )
+    if lang in BLOG_LANGS:
+        svc_links += f'<li><a href="{href(blog_path(lang))}">{esc(u["blog_title"])}</a></li>'
     hours = "".join(f"<p>{esc(d)} : {esc(h)}</p>" for d, h in u["hours_rows"])
     year = datetime.date.today().year
     return (
@@ -388,10 +424,10 @@ def faq_section(lang, faq, alt=False):
     return f'<section{cls}><div class="wrap"><h2>{esc(u["faq"])}</h2><div class="faq">{rows}</div></div></section>'
 
 
-def page(lang, pg, title, meta, graph, main):
+def page(lang, pg, title, meta, graph, main, **kw):
     d = "rtl" if lang == "ar" else "ltr"
     return (
-        f'<!doctype html><html lang="{lang}" dir="{d}"><head>{head(lang, pg, title, meta, graph)}</head>'
+        f'<!doctype html><html lang="{lang}" dir="{d}"><head>{head(lang, pg, title, meta, graph, **kw)}</head>'
         f"<body>{header(lang, pg)}<main id=\"main\">{main}</main>{footer(lang)}</body></html>"
     )
 
@@ -423,6 +459,7 @@ def build_home(lang):
         "</div></section>"
         f'<section><div class="wrap"><h2>{esc(u["services"])}</h2><ul class="grid">{cards}</ul></div></section>'
         f'<section class="alt-bg"><div class="wrap"><h2>{esc(u["why"])}</h2><ul class="why">{why}</ul></div></section>'
+        f"{latest_posts(lang)}"
         f'{faq_section(lang, h["faq"])}'
         f"{visit_section(lang)}"
     )
@@ -486,6 +523,128 @@ def build_service(lang, key):
     write(pth, page(lang, ("svc", key), s["title"], s["meta"], graph, main))
 
 
+def img_dims(src):
+    """width/height attributes for a local image (avoids layout shift), empty if unknown."""
+    if not src or src.startswith("http"):
+        return ""
+    f = OUT / src[len(BASE):].lstrip("/")
+    try:
+        from PIL import Image
+
+        with Image.open(f) as im:
+            return f' width="{im.width}" height="{im.height}"'
+    except Exception:
+        return ""
+
+
+def img_src(path):
+    if not path:
+        return ""
+    return path if path.startswith("http") else BASE + "/" + path.lstrip("/")
+
+
+def post_cards(posts, lang):
+    u = UI[lang]
+    return "".join(
+        f'<li><div class="card"><h3><a href="{href(post_path(x))}">{esc(x["title"])}</a></h3>'
+        f'<p><time datetime="{x["date"]}">{x["date"]}</time></p>'
+        f'<p>{esc(x["summary"])}</p><span class="more" aria-hidden="true">{esc(u["read"])} {u["arrow"]}</span></div></li>'
+        for x in posts
+    )
+
+
+def latest_posts(lang):
+    posts = posts_in(lang)[:3]
+    if not posts:
+        return ""
+    u = UI[lang]
+    return (
+        f'<section><div class="wrap"><h2>{esc(u["latest"])}</h2><ul class="grid">{post_cards(posts, lang)}</ul>'
+        f'<p class="note"><a href="{href(blog_path(lang))}">{esc(u["all_posts"])} {u["arrow"]}</a></p></div></section>'
+    )
+
+
+def build_blog(lang):
+    u = UI[lang]
+    pth = blog_path(lang)
+    title = f'{u["blog_title"]} | {BIZ["brand"]}'
+    main = (
+        '<section class="hero s"><div class="wrap"><div>'
+        f'<nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="{href(home_path(lang))}">{esc(u["home"])}</a></li>'
+        f'<li aria-current="page">{esc(u["blog"])}</li></ol></nav>'
+        f'<h1>{esc(u["blog_title"])}</h1><p class="lead">{esc(u["blog_lead"])}</p></div></div></section>'
+        f'<section><div class="wrap"><ul class="grid">{post_cards(posts_in(lang), lang)}</ul></div></section>'
+        f"{visit_section(lang)}"
+    )
+    graph = [
+        {
+            "@type": "Blog",
+            "@id": url(pth) + "#blog",
+            "url": url(pth),
+            "name": u["blog_title"],
+            "inLanguage": lang,
+            "publisher": {"@id": SITE + "/#business"},
+            "blogPost": [{"@type": "BlogPosting", "headline": x["title"], "url": url(post_path(x))} for x in posts_in(lang)],
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": u["home"], "item": url(home_path(lang))},
+                {"@type": "ListItem", "position": 2, "name": u["blog"], "item": url(pth)},
+            ],
+        },
+    ]
+    write(pth, page(lang, ("blog",), title, u["blog_lead"], graph, main))
+
+
+def build_post(post):
+    lang = post["lang"]
+    u = UI[lang]
+    pth = post_path(post)
+    cover = img_src(post["image"])
+    figure = (
+        f'<figure class="cover"><img src="{cover}"{img_dims(cover)} alt="{esc(post["title"])}" fetchpriority="high" decoding="async"></figure>' if cover else ""
+    )
+    meta = post["summary"] or post["title"]
+    main = (
+        '<section class="hero s"><div class="wrap"><div>'
+        f'<nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="{href(home_path(lang))}">{esc(u["home"])}</a></li>'
+        f'<li><a href="{href(blog_path(lang))}">{esc(u["blog"])}</a></li>'
+        f'<li aria-current="page">{esc(post["title"])}</li></ol></nav>'
+        f'<h1>{esc(post["title"])}</h1>'
+        f'<p class="note">{esc(u["published"])} <time datetime="{post["date"]}">{post["date"]}</time></p></div></div></section>'
+        f'<section><div class="wrap"><article class="post">{figure}{clean_html(post["html"], img_src, img_dims)}'
+        f'<div class="cta">{buttons(lang)}</div><p class="note">{esc(u["ask"])}</p></article></div></section>'
+        f"{visit_section(lang)}"
+    )
+    graph = [
+        {
+            "@type": "BlogPosting",
+            "@id": url(pth) + "#article",
+            "headline": post["title"],
+            "description": meta,
+            "url": url(pth),
+            "mainEntityOfPage": url(pth),
+            "inLanguage": lang,
+            "datePublished": post["date"],
+            "image": (SITE + cover[len(BASE):]) if cover and not cover.startswith("http") else (cover or SITE + "/assets/img/og.jpg"),
+            "author": {"@id": SITE + "/#business"},
+            "publisher": {"@type": "BookStore", "@id": SITE + "/#business", "name": BIZ["brand"], "logo": SITE + "/assets/img/icon-512.png"},
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": u["home"], "item": url(home_path(lang))},
+                {"@type": "ListItem", "position": 2, "name": u["blog"], "item": url(blog_path(lang))},
+                {"@type": "ListItem", "position": 3, "name": post["title"], "item": url(pth)},
+            ],
+        },
+    ]
+    og_img = (SITE + cover[len(BASE):]) if cover and not cover.startswith("http") else None
+    title = f'{post["title"]} | {BIZ["brand"]}'
+    write(pth, page(lang, ("post", post), title, meta, graph, main, og_type="article", image=og_img))
+
+
 def build_404():
     lang = "fr"
     u = UI[lang]
@@ -512,6 +671,10 @@ def build_sitemap():
                 f'<xhtml:link rel="alternate" hreflang="{m}" href="{url(paths[m])}"/>' for m in LANGS
             ) + f'<xhtml:link rel="alternate" hreflang="x-default" href="{url(paths["fr"])}"/>'
             rows.append(f"<url><loc>{url(paths[l])}</loc><lastmod>{TODAY}</lastmod>{alts}</url>")
+    for l in BLOG_LANGS:
+        rows.append(f"<url><loc>{url(blog_path(l))}</loc><lastmod>{posts_in(l)[0]['date'] or TODAY}</lastmod></url>")
+    for x in POSTS:
+        rows.append(f"<url><loc>{url(post_path(x))}</loc><lastmod>{x['date'] or TODAY}</lastmod></url>")
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
@@ -558,6 +721,11 @@ def build_text_files():
         for k in SVC_ORDER:
             lines.append(f"- [{SVC[lang][k]['h1']}]({url(svc_path(lang, k))}): {SVC[lang][k]['card']}")
         lines.append("")
+    if POSTS:
+        lines.append("## Blog")
+        for x in POSTS:
+            lines.append(f"- [{x['title']}]({url(post_path(x))}): {x['summary']}")
+        lines.append("")
     write("/llms.txt", "\n".join(lines))
 
 
@@ -575,6 +743,11 @@ for lang in LANGS:
     build_home(lang)
     for key in SVC_ORDER:
         build_service(lang, key)
+optimize_images(OUT / "assets" / "blog")
+for lang in BLOG_LANGS:
+    build_blog(lang)
+for post in POSTS:
+    build_post(post)
 build_404()
 build_sitemap()
 build_text_files()

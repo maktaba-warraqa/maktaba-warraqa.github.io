@@ -199,3 +199,49 @@ SVC = {
     }
     for lang, t in _text.items()
 }
+
+
+# ---------- blog ----------
+BLOG_UI = {
+    "fr": {"blog": "Blog", "blog_title": "Conseils et actualités", "blog_lead": "Nos conseils pour vos impressions, mémoires, plans et démarches en ligne à Batna.", "latest": "Derniers articles", "read": "Lire l'article", "published": "Publié le", "all_posts": "Tous les articles"},
+    "en": {"blog": "Blog", "blog_title": "Tips and news", "blog_lead": "Our tips for printing, thesis formatting, plans and online services in Batna.", "latest": "Latest articles", "read": "Read the article", "published": "Published on", "all_posts": "All articles"},
+    "ar": {"blog": "المدونة", "blog_title": "نصائح وأخبار", "blog_lead": "نصائحنا للطباعة والمذكرات والمخططات والخدمات الرقمية في باتنة.", "latest": "آخر المقالات", "read": "اقرأ المقال", "published": "نُشر في", "all_posts": "كل المقالات"},
+}
+for _lang in LANGS:
+    UI[_lang].update(BLOG_UI[_lang])
+
+_SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+
+def _posts():
+    out, seen = [], set()
+    folder = _DIR / "blog"
+    for f in sorted(folder.glob("*.json")) if folder.exists() else []:
+        try:
+            p = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError as e:
+            raise SystemExit(f"Article illisible {f.name}: {e}")
+        if p.get("brouillon"):
+            continue
+        slug = (p.get("slug") or "").strip().lower()
+        lang = p.get("langue") or "fr"
+        if not (p.get("titre") and p.get("contenu") and _SLUG.match(slug) and lang in LANGS):
+            print(f"article ignoré (titre, slug, langue ou contenu manquant): {f.name}")
+            continue
+        if (lang, slug) in seen:
+            raise SystemExit(f"Deux articles ont la même adresse: {lang}/{slug}")
+        seen.add((lang, slug))
+        out.append({
+            "lang": lang,
+            "slug": slug,
+            "title": p["titre"].strip(),
+            "date": str(p.get("date") or "")[:10],
+            "summary": (p.get("resume") or "").strip(),
+            "image": (p.get("image") or "").strip(),
+            "html": p["contenu"],
+        })
+    out.sort(key=lambda x: x["date"], reverse=True)
+    return out
+
+
+POSTS = _posts()

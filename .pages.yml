@@ -1,6 +1,42 @@
 # Pages CMS (https://app.pagescms.org) : interface d'édition du site.
 # Chaque enregistrement crée un commit sur main, le site se reconstruit tout seul (1 minute).
+media:
+  input: assets/blog
+  output: /assets/blog
+  extensions: [jpg, jpeg, png, webp]
 content:
+  - name: blog
+    label: "Blog / المدونة"
+    description: "Un article = une langue. Pour publier le même sujet en arabe, créez un second article."
+    type: collection
+    path: content/blog
+    format: json
+    filename: "{year}-{month}-{day}-{fields.slug}.json"
+    view:
+      fields: [titre, langue, date, brouillon]
+      primary: titre
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: titre, label: "Titre de l'article / العنوان", type: string, required: true, description: "Clair et précis, avec le service et Batna si possible. Ex. : Comment imprimer un plan A0 à Batna" }
+      - { name: slug, label: "Adresse de la page", type: string, required: true, pattern: { regex: "^[a-z0-9]+(-[a-z0-9]+)*$", message: "Lettres minuscules sans accents, chiffres et tirets. Ex. : imprimer-plan-a0-batna" }, description: "Lettres latines minuscules et tirets, même pour un article en arabe. Ne plus la changer après publication." }
+      - name: langue
+        label: "Langue / اللغة"
+        type: select
+        required: true
+        default: fr
+        options:
+          values:
+            - { value: fr, label: "Français" }
+            - { value: ar, label: "العربية" }
+            - { value: en, label: "English" }
+      - { name: date, label: "Date / التاريخ", type: date, required: true }
+      - { name: resume, label: "Résumé (affiché dans Google, 155 caractères max) / ملخص", type: text, required: true, options: { maxlength: 160 } }
+      - { name: image, label: "Image principale (facultatif) / صورة", type: image, description: "Photo horizontale de préférence. Elle est réduite automatiquement." }
+      - { name: contenu, label: "Contenu de l'article / المحتوى", type: rich-text, required: true, options: { format: html } }
+      - { name: brouillon, label: "Brouillon (cocher pour ne pas publier) / مسودة", type: boolean, default: false }
   - name: boutique
     label: "Boutique : téléphone, adresse, horaires / المحل"
     type: file
