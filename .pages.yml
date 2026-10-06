@@ -1,0 +1,483 @@
+# Pages CMS (https://app.pagescms.org) : interface d'édition du site.
+# Chaque enregistrement crée un commit sur main, le site se reconstruit tout seul (1 minute).
+content:
+  - name: boutique
+    label: "Boutique : téléphone, adresse, horaires / المحل"
+    type: file
+    path: content/boutique.json
+    format: json
+    fields:
+      - { name: telephone, label: "Téléphone (aussi utilisé pour WhatsApp) / الهاتف", type: string, required: true, description: "Format 0773 58 99 54. Si vous le changez, changez-le aussi dans les textes et les FAQ." }
+      - { name: rue, label: "Rue / الشارع", type: string, required: true }
+      - { name: ville, label: "Ville / المدينة", type: string, required: true }
+      - { name: code_postal, label: "Code postal", type: string, required: true }
+      - { name: google_maps, label: "Lien Google Maps", type: string, required: true }
+      - name: horaires
+        label: "Horaires pour Google (données techniques) / أوقات العمل"
+        description: "Heures au format 07:30 et 21:00. Pensez aussi à modifier les horaires affichés dans chaque langue."
+        type: object
+        list: true
+        fields:
+          - name: jours
+            label: "Jours / الأيام"
+            type: select
+            required: true
+            options:
+              multiple: true
+              values:
+                - { value: Saturday, label: "Samedi / السبت" }
+                - { value: Sunday, label: "Dimanche / الأحد" }
+                - { value: Monday, label: "Lundi / الإثنين" }
+                - { value: Tuesday, label: "Mardi / الثلاثاء" }
+                - { value: Wednesday, label: "Mercredi / الأربعاء" }
+                - { value: Thursday, label: "Jeudi / الخميس" }
+                - { value: Friday, label: "Vendredi / الجمعة" }
+          - { name: ouverture, label: "Ouverture (ex. 07:30) / الفتح", type: string, required: true, pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$" }
+          - { name: fermeture, label: "Fermeture (ex. 21:00) / الغلق", type: string, required: true, pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$" }
+  - name: textes_fr
+    label: "Textes en français / النصوص بالفرنسية"
+    type: file
+    path: content/fr.json
+    format: json
+    fields:
+      - { name: adresse_complete, label: "Adresse affichée / العنوان", type: string, required: true }
+      - name: horaires_affiches
+        label: "Horaires affichés / أوقات العمل المعروضة"
+        type: object
+        list: true
+        fields:
+          - { name: jours, label: "Jours (ex. Samedi au jeudi)", type: string, required: true }
+          - { name: heures, label: "Heures (ex. 7h30 - 21h)", type: string, required: true }
+      - name: accueil
+        label: "Page d'accueil / الصفحة الرئيسية"
+        type: object
+        fields:
+          - { name: h1, label: "Grand titre", type: string, required: true }
+          - { name: lead, label: "Texte d'introduction", type: text, required: true }
+          - { name: kicker, label: "Petit slogan au-dessus du titre (facultatif)", type: string }
+          - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true, description: "Titre bleu dans Google. Gardez Batna et Maktaba Warraqa." }
+          - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: atouts
+            label: "Pourquoi nous choisir"
+            type: object
+            list: true
+            fields:
+              - { name: titre, label: Titre, type: string, required: true }
+              - { name: texte, label: Texte, type: text, required: true }
+          - name: faq
+            label: "Questions fréquentes"
+            type: object
+            list: true
+            fields:
+              - { name: question, label: Question, type: string, required: true }
+              - { name: reponse, label: Réponse, type: text, required: true }
+      - name: services
+        label: "Services / الخدمات"
+        type: object
+        fields:
+          - name: print
+            label: "Impression et photocopie / الطباعة والنسخ"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: largeformat
+            label: "Grand format architectes / الأحجام الكبيرة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: reports
+            label: "Mémoires et rapports / المذكرات والتقارير"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: school
+            label: "Écoles et lycées / المدارس والثانويات"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: digital
+            label: "Services digitaux et IA / الخدمات الرقمية"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: shopping
+            label: "Achats en ligne / الشراء عبر الإنترنت"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+  - name: textes_ar
+    label: "Textes en arabe / النصوص بالعربية"
+    type: file
+    path: content/ar.json
+    format: json
+    fields:
+      - { name: adresse_complete, label: "Adresse affichée / العنوان", type: string, required: true }
+      - name: horaires_affiches
+        label: "Horaires affichés / أوقات العمل المعروضة"
+        type: object
+        list: true
+        fields:
+          - { name: jours, label: "Jours (ex. Samedi au jeudi)", type: string, required: true }
+          - { name: heures, label: "Heures (ex. 7h30 - 21h)", type: string, required: true }
+      - name: accueil
+        label: "Page d'accueil / الصفحة الرئيسية"
+        type: object
+        fields:
+          - { name: h1, label: "Grand titre", type: string, required: true }
+          - { name: lead, label: "Texte d'introduction", type: text, required: true }
+          - { name: kicker, label: "Petit slogan au-dessus du titre (facultatif)", type: string }
+          - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true, description: "Titre bleu dans Google. Gardez Batna et Maktaba Warraqa." }
+          - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: atouts
+            label: "Pourquoi nous choisir"
+            type: object
+            list: true
+            fields:
+              - { name: titre, label: Titre, type: string, required: true }
+              - { name: texte, label: Texte, type: text, required: true }
+          - name: faq
+            label: "Questions fréquentes"
+            type: object
+            list: true
+            fields:
+              - { name: question, label: Question, type: string, required: true }
+              - { name: reponse, label: Réponse, type: text, required: true }
+      - name: services
+        label: "Services / الخدمات"
+        type: object
+        fields:
+          - name: print
+            label: "Impression et photocopie / الطباعة والنسخ"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: largeformat
+            label: "Grand format architectes / الأحجام الكبيرة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: reports
+            label: "Mémoires et rapports / المذكرات والتقارير"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: school
+            label: "Écoles et lycées / المدارس والثانويات"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: digital
+            label: "Services digitaux et IA / الخدمات الرقمية"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: shopping
+            label: "Achats en ligne / الشراء عبر الإنترنت"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+  - name: textes_en
+    label: "Textes en anglais / النصوص بالإنجليزية"
+    type: file
+    path: content/en.json
+    format: json
+    fields:
+      - { name: adresse_complete, label: "Adresse affichée / العنوان", type: string, required: true }
+      - name: horaires_affiches
+        label: "Horaires affichés / أوقات العمل المعروضة"
+        type: object
+        list: true
+        fields:
+          - { name: jours, label: "Jours (ex. Samedi au jeudi)", type: string, required: true }
+          - { name: heures, label: "Heures (ex. 7h30 - 21h)", type: string, required: true }
+      - name: accueil
+        label: "Page d'accueil / الصفحة الرئيسية"
+        type: object
+        fields:
+          - { name: h1, label: "Grand titre", type: string, required: true }
+          - { name: lead, label: "Texte d'introduction", type: text, required: true }
+          - { name: kicker, label: "Petit slogan au-dessus du titre (facultatif)", type: string }
+          - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true, description: "Titre bleu dans Google. Gardez Batna et Maktaba Warraqa." }
+          - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: atouts
+            label: "Pourquoi nous choisir"
+            type: object
+            list: true
+            fields:
+              - { name: titre, label: Titre, type: string, required: true }
+              - { name: texte, label: Texte, type: text, required: true }
+          - name: faq
+            label: "Questions fréquentes"
+            type: object
+            list: true
+            fields:
+              - { name: question, label: Question, type: string, required: true }
+              - { name: reponse, label: Réponse, type: text, required: true }
+      - name: services
+        label: "Services / الخدمات"
+        type: object
+        fields:
+          - name: print
+            label: "Impression et photocopie / الطباعة والنسخ"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: largeformat
+            label: "Grand format architectes / الأحجام الكبيرة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: reports
+            label: "Mémoires et rapports / المذكرات والتقارير"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: school
+            label: "Écoles et lycées / المدارس والثانويات"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: digital
+            label: "Services digitaux et IA / الخدمات الرقمية"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: shopping
+            label: "Achats en ligne / الشراء عبر الإنترنت"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }

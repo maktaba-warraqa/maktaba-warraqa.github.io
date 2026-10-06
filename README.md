@@ -16,7 +16,9 @@ Settings > Pages > Custom domain, then add a file named `CNAME` at the repo root
 
 ## Edit content
 
-All copy lives in `content.py` (business details, hours, 6 services x 3 languages, FAQ). Push the change and the site rebuilds.
+Non-technical editing: Pages CMS (https://app.pagescms.org), configured in `.pages.yml`.
+Editable text lives in `content/` (boutique.json, fr.json, en.json, ar.json). Each save is a commit on main and the site rebuilds in about a minute. If a build fails, the previous version stays online.
+Interface labels, URL slugs and the service list stay in `content.py` (code only).
 
 Preview locally:
 

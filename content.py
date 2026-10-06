@@ -1,22 +1,37 @@
 # -*- coding: utf-8 -*-
-"""All site copy (FR / EN / AR). Edit here, then run build.py."""
+"""Site copy (FR / EN / AR).
+
+Editable text lives in content/*.json (edited through Pages CMS, see .pages.yml).
+This file loads it and keeps the fixed parts: interface labels, URL slugs, service order.
+"""
+import json
+import re
+from pathlib import Path
+
+_DIR = Path(__file__).parent / "content"
+
+
+def _load(name):
+    return json.loads((_DIR / name).read_text(encoding="utf-8"))
+
+
+_shop = _load("boutique.json")
+_digits = re.sub(r"\D", "", _shop["telephone"])
+_intl = "213" + _digits.lstrip("0") if not _digits.startswith("213") else _digits
 
 BIZ = {
     "brand": "Maktaba Warraqa",
     "brand_ar": "مكتبة ووراقة",
-    "phone": "0773 58 99 54",
-    "phone_e164": "+213773589954",
-    "whatsapp": "213773589954",
-    "maps": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x12f4115031e3476b:0x119f1f5bf5146c3c",
-    "street": "Rue des frères Abbabsa",
-    "city": "Batna",
-    "postal": "05000",
+    "phone": _shop["telephone"].strip(),
+    "phone_e164": "+" + _intl,
+    "whatsapp": _intl,
+    "maps": _shop["google_maps"].strip(),
+    "street": _shop["rue"].strip(),
+    "city": _shop["ville"].strip(),
+    "postal": _shop["code_postal"].strip(),
     "country": "DZ",
-    # opening hours: (days, opens, closes) used for JSON-LD
-    "hours": [
-        (["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"], "07:30", "21:00"),
-        (["Friday"], "14:00", "21:00"),
-    ],
+    # opening hours: (days, opens, closes) used for JSON-LD and llms.txt
+    "hours": [(list(h["jours"]), h["ouverture"], h["fermeture"]) for h in _shop["horaires"]],
 }
 
 LANGS = ("fr", "en", "ar")
@@ -143,434 +158,44 @@ SLUGS = {
     },
 }
 
+
+_text = {lang: _load(f"{lang}.json") for lang in LANGS}
+
+for _lang, _t in _text.items():
+    UI[_lang]["address_full"] = _t["adresse_complete"]
+    UI[_lang]["hours_rows"] = [(r["jours"], r["heures"]) for r in _t["horaires_affiches"]]
+
+
+def _qa(rows):
+    return [(r["question"], r["reponse"]) for r in rows]
+
+
 HOME = {
-    "fr": {
-        "title": "Librairie et imprimerie à Batna | Maktaba Warraqa",
-        "meta": "Librairie, imprimerie, grand format pour architectes, mise en page de mémoires, services digitaux et achats en ligne à Batna. Appelez le 0773 58 99 54.",
-        "kicker": "",
-        "h1": "Librairie, imprimerie et services digitaux à Batna",
-        "lead": "Maktaba Warraqa est une librairie-imprimerie située Rue des frères Abbabsa à Batna. Nous proposons l'impression et la photocopie, le grand format pour architectes, la mise en page de mémoires et rapports, des fournitures scolaires, des services digitaux et l'aide à l'achat en ligne.",
-        "why": [
-            ("Tout au même endroit", "Librairie, impression, reliure, grand format et services digitaux sous le même toit."),
-            ("Ouvert jusqu'à 21h", "Du samedi au jeudi de 7h30 à 21h, le vendredi de 14h à 21h."),
-            ("Trois langues", "Nous travaillons en français, en arabe et en anglais."),
-            ("À côté des établissements", "Près d'un lycée et d'une école privée : pratique pour les élèves, les parents et les enseignants."),
-        ],
-        "faq": [
-            ("Où se trouve la boutique ?", "Rue des frères Abbabsa, 05000 Batna, Algérie."),
-            ("Quels sont vos horaires ?", "Du samedi au jeudi de 7h30 à 21h, et le vendredi de 14h à 21h."),
-            ("Comment vous contacter ?", "Par téléphone ou WhatsApp au 0773 58 99 54."),
-            ("Quels services proposez-vous ?", "Impression et photocopie, grand format pour architectes, mise en page de mémoires et rapports, fournitures et impression pour écoles et lycées, services digitaux et IA, et achats en ligne."),
-        ],
-    },
-    "en": {
-        "title": "Bookstore and Print Shop in Batna | Maktaba Warraqa",
-        "meta": "Bookstore and print shop in Batna: printing, large format for architects, thesis formatting, digital services and online shopping help. Call 0773 58 99 54.",
-        "kicker": "",
-        "h1": "Bookstore, print shop and digital services in Batna",
-        "lead": "Maktaba Warraqa is a bookstore and print shop on Rue des frères Abbabsa in Batna. We offer printing and photocopying, large format printing for architects, thesis and report formatting, school supplies, digital services and online shopping help.",
-        "why": [
-            ("All in one place", "Bookstore, printing, binding, large format and digital services under one roof."),
-            ("Open until 9 pm", "Saturday to Thursday 7:30 am to 9 pm, Friday 2 pm to 9 pm."),
-            ("Three languages", "We work in French, Arabic and English."),
-            ("Next to schools", "Close to a high school and a private school: convenient for pupils, parents and teachers."),
-        ],
-        "faq": [
-            ("Where is the shop?", "Rue des frères Abbabsa, 05000 Batna, Algeria."),
-            ("What are your opening hours?", "Saturday to Thursday 7:30 am to 9 pm, and Friday 2 pm to 9 pm."),
-            ("How can I contact you?", "By phone or WhatsApp at 0773 58 99 54."),
-            ("What services do you offer?", "Printing and photocopying, large format printing for architects, thesis and report formatting, supplies and printing for schools, digital and AI services, and online shopping help."),
-        ],
-    },
-    "ar": {
-        "title": "مكتبة ومطبعة في باتنة | مكتبة ووراقة",
-        "meta": "مكتبة ومطبعة في باتنة: طباعة ونسخ، طباعة الأحجام الكبيرة للمهندسين، تنسيق المذكرات، خدمات رقمية ومساعدة في الشراء عبر الإنترنت. اتصل على 0773 58 99 54.",
-        "kicker": "كلش تلقاه عندنا",
-        "h1": "مكتبة ومطبعة وخدمات رقمية في باتنة",
-        "lead": "مكتبة ووراقة مكتبة ومطبعة في شارع الإخوة عبابسة بباتنة. نقدم الطباعة والنسخ، وطباعة الأحجام الكبيرة للمهندسين، وتنسيق المذكرات والتقارير، واللوازم المدرسية، والخدمات الرقمية، والمساعدة في الشراء عبر الإنترنت.",
-        "why": [
-            ("كل شيء في مكان واحد", "مكتبة وطباعة وتجليد وأحجام كبيرة وخدمات رقمية تحت سقف واحد."),
-            ("مفتوح حتى التاسعة مساء", "من السبت إلى الخميس من 7:30 صباحا إلى 9:00 مساء، والجمعة من 2:00 إلى 9:00 مساء."),
-            ("بثلاث لغات", "نعمل بالعربية والفرنسية والإنجليزية."),
-            ("بجوار المؤسسات التعليمية", "قرب ثانوية ومدرسة خاصة: مناسب للتلاميذ والأولياء والأساتذة."),
-        ],
-        "faq": [
-            ("أين يقع المحل؟", "شارع الإخوة عبابسة، باتنة 05000، الجزائر."),
-            ("ما هي أوقات العمل؟", "من السبت إلى الخميس من 7:30 صباحا إلى 9:00 مساء، والجمعة من 2:00 إلى 9:00 مساء."),
-            ("كيف يمكنني التواصل معكم؟", "عبر الهاتف أو واتساب على 0773 58 99 54."),
-            ("ما الخدمات التي تقدمونها؟", "الطباعة والنسخ، طباعة الأحجام الكبيرة للمهندسين، تنسيق المذكرات والتقارير، اللوازم والطباعة للمدارس والثانويات، الخدمات الرقمية والذكاء الاصطناعي، والشراء عبر الإنترنت."),
-        ],
-    },
+    lang: {
+        "title": t["accueil"]["title"],
+        "meta": t["accueil"]["meta"],
+        "kicker": t["accueil"].get("kicker") or "",
+        "h1": t["accueil"]["h1"],
+        "lead": t["accueil"]["lead"],
+        "why": [(r["titre"], r["texte"]) for r in t["accueil"]["atouts"]],
+        "faq": _qa(t["accueil"]["faq"]),
+    }
+    for lang, t in _text.items()
 }
 
 SVC = {
-    "fr": {
-        "print": {
-            "name": "Impression et photocopie",
-            "card": "Photocopie, impression couleur, scan, plastification et reliure.",
-            "title": "Impression et photocopie à Batna | Maktaba Warraqa",
-            "h1": "Impression et photocopie à Batna",
-            "meta": "Photocopie, impression noir et blanc ou couleur, scan, plastification et reliure à Batna. Cartes de visite, flyers, affiches. Appelez le 0773 58 99 54.",
-            "summary": "Maktaba Warraqa imprime et photocopie vos documents à Batna, en noir et blanc ou en couleur : cours, dossiers, CV, flyers, affiches et cartes de visite. Nous assurons aussi le scan, la plastification et la reliure thermique ou spirale. Apportez votre fichier sur clé USB ou envoyez-le par WhatsApp.",
-            "items": [
-                "Photocopie et impression noir et blanc",
-                "Impression couleur",
-                "Scan de documents",
-                "Plastification",
-                "Reliure thermique et spirale",
-                "Cartes de visite, flyers et affiches",
-            ],
-            "faq": [
-                ("Quels fichiers puis-je faire imprimer ?", "PDF, Word, PowerPoint et images. Vous pouvez venir avec une clé USB ou envoyer vos fichiers par WhatsApp au 0773 58 99 54."),
-                ("Proposez-vous la reliure ?", "Oui, reliure thermique et reliure spirale, pour mémoires, rapports et dossiers."),
-                ("Pouvez-vous imprimer des cartes de visite et des flyers ?", "Oui. Envoyez votre maquette ou demandez-nous de la préparer, puis nous vous donnons un devis."),
-            ],
-        },
-        "largeformat": {
-            "name": "Grand format pour architectes",
-            "card": "Plans A2, A1, A0, scan grand format et dossiers de concours.",
-            "title": "Impression grand format architectes à Batna | Maktaba Warraqa",
-            "h1": "Impression grand format pour architectes à Batna",
-            "meta": "Tirage de plans A2, A1 et A0, scan grand format, reliure de dossiers de concours, papier calque et fournitures de maquette à Batna. 0773 58 99 54.",
-            "summary": "Nous imprimons et scannons les plans en grand format (A2, A1 et A0) pour les architectes, bureaux d'études et étudiants en architecture de Batna. Nous relions aussi les dossiers de concours et fournissons papier calque, carton mousse et fournitures de maquette.",
-            "items": [
-                "Tirage de plans A2, A1 et A0",
-                "Scan grand format",
-                "Reliure de dossiers de concours",
-                "Papier calque",
-                "Carton mousse",
-                "Fournitures de maquette",
-            ],
-            "faq": [
-                ("Quels formats grand format imprimez-vous ?", "Du A2 au A0. Envoyez votre plan en PDF à l'échelle, par WhatsApp ou sur clé USB."),
-                ("Pouvez-vous relier un dossier de concours ?", "Oui, nous assurons la reliure et la mise en forme des dossiers de concours."),
-                ("Avez-vous du papier calque et du carton mousse ?", "Oui, nous proposons papier calque, carton mousse et fournitures de maquette."),
-            ],
-        },
-        "reports": {
-            "name": "Mémoires et rapports",
-            "card": "Mémoires, PFE, rapports, CV : nous soignons la mise en page.",
-            "title": "Mise en page de mémoires et rapports à Batna | Maktaba Warraqa",
-            "h1": "Mise en page de mémoires et rapports à Batna",
-            "meta": "Mise en page et impression de mémoires, PFE, rapports de stage et techniques, dossiers de concours, CV et lettres de motivation à Batna. 0773 58 99 54.",
-            "summary": "Nous mettons en page et imprimons vos mémoires, exposés, projets de fin d'études, rapports de stage et rapports techniques à Batna. Nous préparons aussi les dossiers de concours, les rapports d'expertise, les CV et les lettres de motivation en français, anglais et arabe. Le contenu reste le vôtre : nous nous occupons de la forme.",
-            "items": [
-                "Mise en page de mémoires, exposés et PFE",
-                "Rapports de stage et rapports techniques",
-                "Dossiers de concours et rapports d'expertise",
-                "CV et lettres de motivation (français, anglais, arabe)",
-                "Impression et reliure du document final",
-            ],
-            "faq": [
-                ("Rédigez-vous le contenu de mon mémoire ?", "Non. Nous assurons la mise en page, la mise en forme et l'impression. Le contenu reste le vôtre."),
-                ("Pouvez-vous respecter le modèle de mon université ?", "Oui. Envoyez votre fichier avec la charte de votre université ou de votre école, nous l'appliquons."),
-                ("Pouvez-vous faire mon CV en arabe, français ou anglais ?", "Oui, en arabe, en français ou en anglais."),
-            ],
-        },
-        "school": {
-            "name": "Écoles et lycées",
-            "card": "Polycopiés, packs rentrée, badges, diplômes et photos d'identité.",
-            "title": "Fournitures et impression pour écoles à Batna | Maktaba Warraqa",
-            "h1": "Fournitures et impression pour écoles et lycées à Batna",
-            "meta": "Polycopiés de cours, impression d'examens, packs rentrée, badges, diplômes, photos d'identité et fournitures scolaires à Batna. Appelez le 0773 58 99 54.",
-            "summary": "Nous imprimons les polycopiés de cours et les examens, préparons des packs de fournitures pour la rentrée par niveau, et réalisons badges, diplômes, bulletins et affiches pour les écoles, lycées et enseignants de Batna. Nous faisons aussi les photos d'identité et préparons les dossiers administratifs.",
-            "items": [
-                "Polycopiés de cours et impression d'examens",
-                "Packs rentrée par niveau (primaire, collège, lycée)",
-                "Badges, diplômes, bulletins et affiches",
-                "Photos d'identité et dossiers administratifs",
-                "Fournitures scolaires et de bureau",
-            ],
-            "faq": [
-                ("Proposez-vous des tarifs pour les établissements ?", "Oui. Pour les écoles, lycées et enseignants qui impriment régulièrement, nous proposons un contrat adapté. Contactez-nous pour un devis."),
-                ("Comment fonctionnent les packs rentrée ?", "Nous préparons des listes de fournitures par niveau (primaire, collège, lycée). Demandez la liste de votre niveau en boutique ou par WhatsApp."),
-                ("Pouvez-vous imprimer des examens en grande quantité ?", "Oui. Envoyez le fichier et le nombre de copies, nous vous confirmons le délai."),
-            ],
-        },
-        "digital": {
-            "name": "Services digitaux et IA",
-            "card": "Abonnements IA sur votre compte, ateliers, Canva et fiche Google.",
-            "title": "Services digitaux et IA à Batna | Maktaba Warraqa",
-            "h1": "Services digitaux et IA à Batna",
-            "meta": "Abonnements ChatGPT, Gemini et Claude sur votre compte, ateliers IA, design Canva et fiche Google Business Profile à Batna. Appelez le 0773 58 99 54.",
-            "summary": "Nous vous aidons à souscrire un abonnement ChatGPT, Gemini ou Claude et à l'activer sur votre propre compte. Nous animons aussi des ateliers IA pour élèves, étudiants et enseignants, créons des visuels Canva et configurons la fiche Google Business Profile des commerçants.",
-            "items": [
-                "Abonnements ChatGPT, Gemini et Claude sur votre compte",
-                "Ateliers IA pour élèves, étudiants et enseignants",
-                "Design Canva : affiches, posts et présentations",
-                "Fiche Google Business Profile pour commerçants",
-                "Logos, QR codes et cartes de visite pour commerçants",
-            ],
-            "faq": [
-                ("Mon abonnement est-il sur mon propre compte ?", "Oui. L'abonnement est activé sur votre propre compte. Nous ne partageons pas de comptes."),
-                ("Quels services d'IA proposez-vous ?", "ChatGPT, Gemini et Claude. Contactez-nous pour connaître les offres disponibles."),
-                ("Organisez-vous des ateliers pour les élèves et les étudiants ?", "Oui, sur l'usage de l'IA pour la recherche, la rédaction et la synthèse. Contactez-nous pour organiser un atelier."),
-            ],
-        },
-        "shopping": {
-            "name": "Achats en ligne",
-            "card": "AliExpress, France, Europe : commande, suivi et retrait en boutique.",
-            "title": "Achats en ligne AliExpress à Batna | Maktaba Warraqa",
-            "h1": "Achats en ligne : AliExpress, France et Europe",
-            "meta": "Nous commandons pour vous sur AliExpress et les sites français et européens, gérons paiement et suivi, et vous retirez votre colis à Batna. 0773 58 99 54.",
-            "summary": "Nous vous aidons à commander sur AliExpress, sur les sites français et européens et sur d'autres sites internationaux. Nous nous occupons de la commande, du paiement et du suivi, puis vous retirez votre colis en boutique à Batna.",
-            "items": [
-                "Commandes AliExpress et sites internationaux",
-                "Achats sur les sites français et européens",
-                "Paiement et suivi de commande",
-                "Retrait du colis en boutique",
-            ],
-            "faq": [
-                ("Sur quels sites pouvez-vous commander ?", "AliExpress, les sites français et européens et d'autres sites internationaux. Dites-nous quel produit vous voulez, nous vous confirmons si c'est possible."),
-                ("Comment suivre ma commande ?", "Nous suivons la commande pour vous et vous prévenons à l'arrivée du colis."),
-                ("Où retirer mon colis ?", "En boutique, Rue des frères Abbabsa à Batna."),
-            ],
-        },
-    },
-    "en": {
-        "print": {
-            "name": "Printing and copying",
-            "card": "Photocopying, color printing, scanning, lamination and binding.",
-            "title": "Printing and Photocopying in Batna | Maktaba Warraqa",
-            "h1": "Printing and photocopying in Batna",
-            "meta": "Black and white and color printing, photocopying, scanning, lamination and binding in Batna. Business cards, flyers, posters. Call 0773 58 99 54.",
-            "summary": "Maktaba Warraqa prints and photocopies your documents in Batna, in black and white or color: course notes, files, CVs, flyers, posters and business cards. We also scan, laminate and bind documents with thermal or spiral binding. Bring your file on a USB stick or send it on WhatsApp.",
-            "items": [
-                "Black and white photocopying and printing",
-                "Color printing",
-                "Document scanning",
-                "Lamination",
-                "Thermal and spiral binding",
-                "Business cards, flyers and posters",
-            ],
-            "faq": [
-                ("Which files can I have printed?", "PDF, Word, PowerPoint and images. Bring them on a USB stick or send them on WhatsApp at 0773 58 99 54."),
-                ("Do you offer binding?", "Yes, thermal and spiral binding for theses, reports and files."),
-                ("Can you print business cards and flyers?", "Yes. Send your design or ask us to prepare it, and we will give you a quote."),
-            ],
-        },
-        "largeformat": {
-            "name": "Large format for architects",
-            "card": "A2, A1 and A0 plans, large format scanning and competition files.",
-            "title": "Large Format Printing for Architects in Batna | Maktaba",
-            "h1": "Large format printing for architects in Batna",
-            "meta": "A2, A1 and A0 plan printing, large format scanning, competition file binding, tracing paper and model supplies in Batna. Call 0773 58 99 54.",
-            "summary": "We print and scan plans in large format (A2, A1 and A0) for architects, design offices and architecture students in Batna. We also bind competition files and supply tracing paper, foam board and model-making supplies.",
-            "items": [
-                "Plan printing in A2, A1 and A0",
-                "Large format scanning",
-                "Competition file binding",
-                "Tracing paper",
-                "Foam board",
-                "Model-making supplies",
-            ],
-            "faq": [
-                ("Which large formats do you print?", "From A2 to A0. Send your plan as a PDF at scale, on WhatsApp or on a USB stick."),
-                ("Can you bind a competition file?", "Yes, we bind and format competition files."),
-                ("Do you stock tracing paper and foam board?", "Yes, we offer tracing paper, foam board and model-making supplies."),
-            ],
-        },
-        "reports": {
-            "name": "Theses and reports",
-            "card": "Theses, final-year projects, reports, CVs: we take care of the layout.",
-            "title": "Thesis and Report Formatting in Batna | Maktaba Warraqa",
-            "h1": "Thesis and report formatting in Batna",
-            "meta": "Layout and printing of theses, final-year projects, internship and technical reports, competition files, CVs and cover letters in Batna. 0773 58 99 54.",
-            "summary": "We format and print theses, presentations, final-year projects, internship reports and technical reports in Batna. We also prepare competition files, expert reports, CVs and cover letters in French, English and Arabic. The content stays yours: we take care of the form.",
-            "items": [
-                "Formatting of theses, presentations and final-year projects",
-                "Internship and technical reports",
-                "Competition files and expert reports",
-                "CVs and cover letters (French, English, Arabic)",
-                "Printing and binding of the final document",
-            ],
-            "faq": [
-                ("Do you write the content of my thesis?", "No. We handle layout, formatting and printing. The content remains yours."),
-                ("Can you follow my university's template?", "Yes. Send your file with your university or school guidelines and we apply them."),
-                ("Can you make my CV in Arabic, French or English?", "Yes, in Arabic, French or English."),
-            ],
-        },
-        "school": {
-            "name": "Schools and high schools",
-            "card": "Course handouts, back-to-school packs, badges, diplomas and ID photos.",
-            "title": "School Supplies and Printing in Batna | Maktaba Warraqa",
-            "h1": "Supplies and printing for schools and high schools in Batna",
-            "meta": "Course handouts, exam printing, back-to-school packs, badges, diplomas, ID photos and school supplies in Batna. Call 0773 58 99 54.",
-            "summary": "We print course handouts and exams, prepare back-to-school packs by level, and make badges, diplomas, report cards and posters for schools, high schools and teachers in Batna. We also take ID photos and prepare administrative files.",
-            "items": [
-                "Course handouts and exam printing",
-                "Back-to-school packs by level (primary, middle, high school)",
-                "Badges, diplomas, report cards and posters",
-                "ID photos and administrative files",
-                "School and office supplies",
-            ],
-            "faq": [
-                ("Do you offer rates for schools?", "Yes. For schools, high schools and teachers who print regularly, we offer a tailored agreement. Contact us for a quote."),
-                ("How do back-to-school packs work?", "We prepare supply lists by level (primary, middle, high school). Ask for the list for your level in store or on WhatsApp."),
-                ("Can you print exams in large quantities?", "Yes. Send the file and the number of copies, and we confirm the turnaround."),
-            ],
-        },
-        "digital": {
-            "name": "Digital and AI services",
-            "card": "AI plans on your account, workshops, Canva and Google profile setup.",
-            "title": "Digital and AI Services in Batna | Maktaba Warraqa",
-            "h1": "Digital and AI services in Batna",
-            "meta": "ChatGPT, Gemini and Claude subscriptions on your own account, AI workshops, Canva design and Google Business Profile setup in Batna. 0773 58 99 54.",
-            "summary": "We help you subscribe to ChatGPT, Gemini or Claude and activate the plan on your own account. We also run AI workshops for pupils, students and teachers, design visuals on Canva, and set up the Google Business Profile of local shops.",
-            "items": [
-                "ChatGPT, Gemini and Claude subscriptions on your own account",
-                "AI workshops for pupils, students and teachers",
-                "Canva design: posters, posts and presentations",
-                "Google Business Profile setup for shops",
-                "Logos, QR codes and business cards for local businesses",
-            ],
-            "faq": [
-                ("Is the subscription on my own account?", "Yes. The plan is activated on your own account. We do not share accounts."),
-                ("Which AI services do you offer?", "ChatGPT, Gemini and Claude. Contact us to learn about the plans available."),
-                ("Do you run workshops for pupils and students?", "Yes, on using AI for research, writing and summaries. Contact us to organize a workshop."),
-            ],
-        },
-        "shopping": {
-            "name": "Online shopping",
-            "card": "AliExpress, France, Europe: ordering, tracking and in-store pick-up.",
-            "title": "AliExpress and Online Orders in Batna | Maktaba Warraqa",
-            "h1": "Online shopping: AliExpress, France and Europe",
-            "meta": "We order for you on AliExpress and on French and European sites, handle payment and tracking, and you pick up your parcel in Batna. 0773 58 99 54.",
-            "summary": "We help you order on AliExpress, on French and European websites and on other international sites. We handle the order, the payment and the tracking, then you pick up your parcel in store in Batna.",
-            "items": [
-                "Orders on AliExpress and international sites",
-                "Purchases on French and European sites",
-                "Payment and order tracking",
-                "Parcel pick-up in store",
-            ],
-            "faq": [
-                ("Which websites can you order from?", "AliExpress, French and European websites and other international sites. Tell us which product you want and we confirm whether it is possible."),
-                ("How do I follow my order?", "We track the order for you and tell you when the parcel arrives."),
-                ("Where do I pick up my parcel?", "In store, Rue des frères Abbabsa in Batna."),
-            ],
-        },
-    },
-    "ar": {
-        "print": {
-            "name": "الطباعة والنسخ",
-            "card": "نسخ وطباعة بالألوان ومسح ضوئي وتغليف وتجليد.",
-            "title": "الطباعة والنسخ في باتنة | مكتبة ووراقة",
-            "h1": "الطباعة والنسخ في باتنة",
-            "meta": "نسخ وطباعة بالأبيض والأسود وبالألوان، مسح ضوئي، تغليف وتجليد في باتنة. بطاقات زيارة ومطويات وملصقات. اتصل على 0773 58 99 54.",
-            "summary": "تقدم مكتبة ووراقة في باتنة خدمة الطباعة والنسخ بالأبيض والأسود وبالألوان: دروس وملفات وسير ذاتية ومطويات وملصقات وبطاقات زيارة. كما نوفر المسح الضوئي والتغليف والتجليد الحراري واللولبي. أحضر ملفك على مفتاح USB أو أرسله عبر واتساب.",
-            "items": [
-                "نسخ وطباعة بالأبيض والأسود",
-                "طباعة بالألوان",
-                "مسح ضوئي للوثائق",
-                "تغليف",
-                "تجليد حراري ولولبي",
-                "بطاقات زيارة ومطويات وملصقات",
-            ],
-            "faq": [
-                ("ما أنواع الملفات التي يمكن طباعتها؟", "ملفات PDF وWord وPowerPoint والصور. يمكنك إحضارها على مفتاح USB أو إرسالها عبر واتساب على 0773 58 99 54."),
-                ("هل توفرون التجليد؟", "نعم، تجليد حراري ولولبي للمذكرات والتقارير والملفات."),
-                ("هل يمكنكم طباعة بطاقات الزيارة والمطويات؟", "نعم. أرسل تصميمك أو اطلب منا إعداده، ثم نعطيك عرض سعر."),
-            ],
-        },
-        "largeformat": {
-            "name": "الطباعة الكبيرة للمهندسين",
-            "card": "مخططات A2، A1، A0 ومسح ضوئي كبير وملفات المسابقات.",
-            "title": "طباعة المخططات الكبيرة للمهندسين في باتنة | مكتبة ووراقة",
-            "h1": "طباعة المخططات الكبيرة للمهندسين المعماريين في باتنة",
-            "meta": "طباعة مخططات A2، A1، A0، مسح ضوئي للأحجام الكبيرة، تجليد ملفات المسابقات، ورق الكالك ولوازم المجسمات في باتنة. اتصل على 0773 58 99 54.",
-            "summary": "نطبع ونمسح ضوئيا المخططات بالأحجام الكبيرة (A2، A1، A0) للمهندسين المعماريين ومكاتب الدراسات وطلبة الهندسة المعمارية في باتنة. كما نجلد ملفات المسابقات ونوفر ورق الكالك والكرتون الفوم ولوازم المجسمات.",
-            "items": [
-                "طباعة مخططات A2 وA1 وA0",
-                "مسح ضوئي للأحجام الكبيرة",
-                "تجليد ملفات المسابقات",
-                "ورق الكالك",
-                "كرتون الفوم",
-                "لوازم المجسمات",
-            ],
-            "faq": [
-                ("ما الأحجام الكبيرة التي تطبعونها؟", "من A2 إلى A0. أرسل مخططك بصيغة PDF مضبوط المقياس عبر واتساب أو على مفتاح USB."),
-                ("هل يمكنكم تجليد ملف مسابقة؟", "نعم، نتولى تجليد ملفات المسابقات وتنسيقها."),
-                ("هل تتوفر عندكم ورق الكالك والكرتون الفوم؟", "نعم، نوفر ورق الكالك والكرتون الفوم ولوازم المجسمات."),
-            ],
-        },
-        "reports": {
-            "name": "المذكرات والتقارير",
-            "card": "مذكرات ومشاريع تخرج وتقارير وسير ذاتية: نعتني بالتنسيق.",
-            "title": "تنسيق المذكرات والتقارير في باتنة | مكتبة ووراقة",
-            "h1": "تنسيق المذكرات والتقارير في باتنة",
-            "meta": "تنسيق وطباعة المذكرات ومشاريع التخرج وتقارير التربص والتقارير التقنية وملفات المسابقات والسير الذاتية في باتنة. اتصل على 0773 58 99 54.",
-            "summary": "ننسق ونطبع المذكرات والبحوث ومشاريع التخرج وتقارير التربص والتقارير التقنية في باتنة. كما نجهز ملفات المسابقات وتقارير الخبرة والسير الذاتية ورسائل التحفيز بالعربية والفرنسية والإنجليزية. المحتوى يبقى من عملك، ونحن نتكفل بالشكل.",
-            "items": [
-                "تنسيق المذكرات والبحوث ومشاريع التخرج",
-                "تقارير التربص والتقارير التقنية",
-                "ملفات المسابقات وتقارير الخبرة",
-                "السير الذاتية ورسائل التحفيز (عربي، فرنسي، إنجليزي)",
-                "طباعة وتجليد الوثيقة النهائية",
-            ],
-            "faq": [
-                ("هل تكتبون محتوى مذكرتي؟", "لا. نتكفل بالتنسيق والإخراج والطباعة، أما المحتوى فيبقى من عملك."),
-                ("هل يمكنكم احترام نموذج جامعتي؟", "نعم، أرسل ملفك مع نموذج جامعتك أو مدرستك ونطبقه."),
-                ("هل تنجزون السيرة الذاتية بالعربية أو الفرنسية أو الإنجليزية؟", "نعم، بالعربية والفرنسية والإنجليزية."),
-            ],
-        },
-        "school": {
-            "name": "المدارس والثانويات",
-            "card": "نسخ الدروس وحقائب الدخول المدرسي وشارات وشهادات وصور الهوية.",
-            "title": "لوازم وطباعة للمدارس والثانويات في باتنة | مكتبة ووراقة",
-            "h1": "لوازم وطباعة للمدارس والثانويات في باتنة",
-            "meta": "نسخ الدروس وطباعة الامتحانات، حقائب الدخول المدرسي، شارات وشهادات، صور الهوية ولوازم مدرسية في باتنة. اتصل على 0773 58 99 54.",
-            "summary": "نطبع الدروس والامتحانات، ونحضر حقائب الدخول المدرسي حسب المستوى، وننجز الشارات والشهادات وكشوف النقاط والملصقات للمدارس والثانويات والأساتذة في باتنة. كما نوفر صور الهوية ونحضر الملفات الإدارية.",
-            "items": [
-                "نسخ الدروس وطباعة الامتحانات",
-                "حقائب الدخول المدرسي حسب المستوى (ابتدائي، متوسط، ثانوي)",
-                "شارات وشهادات وكشوف نقاط وملصقات",
-                "صور الهوية وتحضير الملفات الإدارية",
-                "لوازم مدرسية ومكتبية",
-            ],
-            "faq": [
-                ("هل لديكم عروض للمؤسسات التعليمية؟", "نعم. للمدارس والثانويات والأساتذة الذين يطبعون بانتظام نقترح عقدا مناسبا. اتصل بنا للحصول على عرض سعر."),
-                ("كيف تعمل حقائب الدخول المدرسي؟", "نحضر قوائم لوازم حسب المستوى (ابتدائي، متوسط، ثانوي). اطلب قائمة مستواك في المحل أو عبر واتساب."),
-                ("هل يمكنكم طباعة امتحانات بكميات كبيرة؟", "نعم. أرسل الملف وعدد النسخ ونؤكد لك الأجل."),
-            ],
-        },
-        "digital": {
-            "name": "الخدمات الرقمية والذكاء الاصطناعي",
-            "card": "اشتراكات الذكاء الاصطناعي على حسابك وورشات وكانفا وصفحة Google.",
-            "title": "الخدمات الرقمية والذكاء الاصطناعي في باتنة | مكتبة ووراقة",
-            "h1": "الخدمات الرقمية والذكاء الاصطناعي في باتنة",
-            "meta": "اشتراكات ChatGPT وGemini وClaude على حسابك الشخصي، ورشات الذكاء الاصطناعي، تصميم كانفا وصفحة Google Business Profile في باتنة. 0773 58 99 54.",
-            "summary": "نساعدك على الاشتراك في ChatGPT أو Gemini أو Claude وتفعيله على حسابك الشخصي. كما ننظم ورشات الذكاء الاصطناعي للتلاميذ والطلبة والأساتذة، ونصمم مواد على كانفا، ونعد صفحة Google Business Profile للمحلات التجارية.",
-            "items": [
-                "اشتراكات ChatGPT، Gemini، Claude على حسابك الشخصي",
-                "ورشات الذكاء الاصطناعي للتلاميذ والطلبة والأساتذة",
-                "تصميم كانفا: ملصقات ومنشورات وعروض تقديمية",
-                "إنشاء صفحة Google Business Profile للمحلات",
-                "شعارات ورموز QR وبطاقات زيارة للتجار",
-            ],
-            "faq": [
-                ("هل الاشتراك على حسابي الشخصي؟", "نعم. يُفعَّل الاشتراك على حسابك الشخصي، ولا نشارك الحسابات."),
-                ("ما خدمات الذكاء الاصطناعي التي تقدمونها؟", "ChatGPT وGemini وClaude. اتصل بنا لمعرفة العروض المتوفرة."),
-                ("هل تنظمون ورشات للتلاميذ والطلبة؟", "نعم، حول استعمال الذكاء الاصطناعي في البحث والكتابة والتلخيص. اتصل بنا لتنظيم ورشة."),
-            ],
-        },
-        "shopping": {
-            "name": "الشراء عبر الإنترنت",
-            "card": "علي إكسبرس وفرنسا وأوروبا: طلب ومتابعة واستلام من المحل.",
-            "title": "الشراء من علي إكسبرس عبر الإنترنت في باتنة | مكتبة ووراقة",
-            "h1": "الشراء عبر الإنترنت: علي إكسبرس وفرنسا وأوروبا",
-            "meta": "نطلب لك من علي إكسبرس ومن المواقع الفرنسية والأوروبية، ونتكفل بالدفع والمتابعة، وتستلم طردك في باتنة. اتصل على 0773 58 99 54.",
-            "summary": "نساعدك على الطلب من علي إكسبرس ومن المواقع الفرنسية والأوروبية ومواقع دولية أخرى. نتكفل بالطلب والدفع والمتابعة، ثم تستلم طردك من المحل في باتنة.",
-            "items": [
-                "الطلب من علي إكسبرس والمواقع العالمية",
-                "الشراء من المواقع الفرنسية والأوروبية",
-                "الدفع وتتبع الطلبية",
-                "استلام الطرد من المحل",
-            ],
-            "faq": [
-                ("ما المواقع التي يمكنكم الطلب منها؟", "علي إكسبرس والمواقع الفرنسية والأوروبية ومواقع دولية أخرى. أخبرنا بالمنتج الذي تريده ونؤكد لك إن كان ذلك ممكنا."),
-                ("كيف أتابع طلبيتي؟", "نتابع الطلبية نيابة عنك ونخبرك عند وصول الطرد."),
-                ("أين أستلم طردي؟", "في المحل بشارع الإخوة عبابسة في باتنة."),
-            ],
-        },
-    },
+    lang: {
+        key: {
+            "name": s["name"],
+            "card": s["card"],
+            "title": s["title"],
+            "h1": s["h1"],
+            "meta": s["meta"],
+            "summary": s["summary"],
+            "items": [i for i in s["items"] if i and i.strip()],
+            "faq": _qa(s["faq"]),
+        }
+        for key, s in ((k, t["services"][k]) for k in SVC_ORDER)
+    }
+    for lang, t in _text.items()
 }

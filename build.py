@@ -521,6 +521,20 @@ def build_sitemap():
     write("/sitemap.xml", xml)
 
 
+def _hm(value):
+    h, m = value.split(":")
+    return f"{int(h)}:{m}"
+
+
+def hours_line():
+    """Opening hours as plain English text for llms.txt, built from BIZ["hours"]."""
+    out = []
+    for days, opens, closes in BIZ["hours"]:
+        span = days[0] if len(days) == 1 else f"{days[0]} to {days[-1]}"
+        out.append(f"{span} {_hm(opens)}-{_hm(closes)}")
+    return ", ".join(out)
+
+
 def build_text_files():
     write("/robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
     write("/09179b15a8c42e416cc7712b095079b1.txt", "09179b15a8c42e416cc7712b095079b1")
@@ -534,7 +548,7 @@ def build_text_files():
         "## Contact",
         f"- Address: {UI['en']['address_full']}",
         f"- Phone and WhatsApp: {BIZ['phone']} ({BIZ['phone_e164']})",
-        "- Hours: Saturday to Thursday 7:30-21:00, Friday 14:00-21:00",
+        "- Hours: " + hours_line(),
         f"- Map: {BIZ['maps']}",
         "",
     ]
