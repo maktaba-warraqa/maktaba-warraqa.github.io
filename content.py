@@ -126,7 +126,7 @@ UI = {
     },
 }
 
-SVC_ORDER = ["print", "largeformat", "design", "reports", "school", "digital", "shopping"]
+SVC_ORDER = ["print", "largeformat", "logo", "branding", "cards", "website", "reports", "school", "digital", "shopping"]
 
 SLUGS = {
     "print": {
@@ -149,10 +149,25 @@ SLUGS = {
         "en": "school-supplies-printing-batna",
         "ar": "school-supplies-printing-batna",
     },
-    "design": {
-        "fr": "creation-logo-carte-visite-site-vitrine-batna",
-        "en": "logo-business-card-website-design-batna",
-        "ar": "logo-business-card-website-design-batna",
+    "logo": {
+        "fr": "creation-logo-batna",
+        "en": "logo-design-batna",
+        "ar": "logo-design-batna",
+    },
+    "branding": {
+        "fr": "charte-graphique-batna",
+        "en": "brand-guidelines-batna",
+        "ar": "brand-guidelines-batna",
+    },
+    "cards": {
+        "fr": "cartes-de-visite-batna",
+        "en": "business-cards-batna",
+        "ar": "business-cards-batna",
+    },
+    "website": {
+        "fr": "creation-site-vitrine-batna",
+        "en": "website-design-batna",
+        "ar": "website-design-batna",
     },
     "digital": {
         "fr": "services-digitaux-ia-batna",
@@ -254,3 +269,11 @@ def _posts():
 
 
 POSTS = _posts()
+
+
+# Old URLs kept alive as redirects (path without language prefix logic: full paths)
+REDIRECTS = {
+    "/creation-logo-carte-visite-site-vitrine-batna/": "/creation-logo-batna/",
+    "/en/logo-business-card-website-design-batna/": "/en/logo-design-batna/",
+    "/ar/logo-business-card-website-design-batna/": "/ar/logo-design-batna/",
+}

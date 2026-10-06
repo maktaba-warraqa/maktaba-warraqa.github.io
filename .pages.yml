@@ -39,7 +39,10 @@ content:
           values:
             - { value: print, label: "Impression et photocopie" }
             - { value: largeformat, label: "Grand format / plans architectes" }
-            - { value: design, label: "Logo, carte de visite, charte, site vitrine" }
+            - { value: logo, label: "Création de logo" }
+            - { value: branding, label: "Charte graphique" }
+            - { value: cards, label: "Cartes de visite" }
+            - { value: website, label: "Site vitrine" }
             - { value: reports, label: "Mémoires et rapports" }
             - { value: school, label: "Écoles et lycées" }
             - { value: digital, label: "Services digitaux et IA" }
@@ -161,8 +164,62 @@ content:
                   - { name: reponse, label: Réponse, type: text, required: true }
               - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
-          - name: design
-            label: "Logo, carte de visite, charte, site vitrine / التصميم والمواقع"
+          - name: logo
+            label: "Création de logo / تصميم الشعار"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: branding
+            label: "Charte graphique / الهوية البصرية"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: cards
+            label: "Cartes de visite / بطاقات الزيارة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: website
+            label: "Site vitrine / موقع تعريفي"
             type: object
             fields:
               - { name: name, label: "Nom du service", type: string, required: true }
@@ -328,8 +385,62 @@ content:
                   - { name: reponse, label: Réponse, type: text, required: true }
               - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
-          - name: design
-            label: "Logo, carte de visite, charte, site vitrine / التصميم والمواقع"
+          - name: logo
+            label: "Création de logo / تصميم الشعار"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: branding
+            label: "Charte graphique / الهوية البصرية"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: cards
+            label: "Cartes de visite / بطاقات الزيارة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: website
+            label: "Site vitrine / موقع تعريفي"
             type: object
             fields:
               - { name: name, label: "Nom du service", type: string, required: true }
@@ -495,8 +606,62 @@ content:
                   - { name: reponse, label: Réponse, type: text, required: true }
               - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
-          - name: design
-            label: "Logo, carte de visite, charte, site vitrine / التصميم والمواقع"
+          - name: logo
+            label: "Création de logo / تصميم الشعار"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: branding
+            label: "Charte graphique / الهوية البصرية"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: cards
+            label: "Cartes de visite / بطاقات الزيارة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: website
+            label: "Site vitrine / موقع تعريفي"
             type: object
             fields:
               - { name: name, label: "Nom du service", type: string, required: true }

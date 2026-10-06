@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
-from content import BIZ, HOME, LANG_LABEL, LANG_SHORT, LANGS, LOCALE, POSTS, SLUGS, SVC, SVC_ORDER, UI
+from content import BIZ, HOME, LANG_LABEL, LANG_SHORT, LANGS, LOCALE, POSTS, REDIRECTS, SLUGS, SVC, SVC_ORDER, UI
 from blog import clean_html, optimize_images
 
 ROOT = Path(__file__).parent
@@ -767,6 +767,10 @@ for lang in BLOG_LANGS:
     build_blog(lang)
 for post in POSTS:
     build_post(post)
+for old, new in REDIRECTS.items():
+    write(old, f'<!doctype html><html><head><meta charset="utf-8"><title>{esc(BIZ["brand"])}</title>'
+          f'<link rel="canonical" href="{url(new)}"><meta http-equiv="refresh" content="0; url={href(new)}"></head>'
+          f'<body><a href="{href(new)}">{url(new)}</a></body></html>')
 build_404()
 build_sitemap()
 build_text_files()
