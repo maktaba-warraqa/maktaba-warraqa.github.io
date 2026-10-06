@@ -306,6 +306,7 @@ def head(lang, page, title, meta, graph):
         f'<meta name="description" content="{esc(meta)}">'
         '<meta name="robots" content="index,follow,max-image-preview:large">'
         '<meta name="theme-color" content="#121212">'
+        '<meta name="google-site-verification" content="c1eWeyqJIzoh718gMN-DgbD9hQAGho_J9hb_zIfSAcM">'
         f'<link rel="canonical" href="{url(own)}">'
         f"{alts}"
         f'<meta property="og:type" content="website">'
