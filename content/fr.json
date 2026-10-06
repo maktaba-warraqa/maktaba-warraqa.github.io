@@ -1,0 +1,233 @@
+{
+  "adresse_complete": "Rue des frères Abbabsa, 05000 Batna, Algérie",
+  "horaires_affiches": [
+    {
+      "jours": "Samedi au jeudi",
+      "heures": "7h30 - 21h"
+    },
+    {
+      "jours": "Vendredi",
+      "heures": "14h - 21h"
+    }
+  ],
+  "accueil": {
+    "title": "Librairie et imprimerie à Batna | Maktaba Warraqa",
+    "meta": "Librairie, imprimerie, grand format pour architectes, mise en page de mémoires, services digitaux et achats en ligne à Batna. Appelez le 0773 58 99 54.",
+    "kicker": "",
+    "h1": "Librairie, imprimerie et services digitaux à Batna",
+    "lead": "Maktaba Warraqa est une librairie-imprimerie située Rue des frères Abbabsa à Batna. Nous proposons l'impression et la photocopie, le grand format pour architectes, la mise en page de mémoires et rapports, des fournitures scolaires, des services digitaux et l'aide à l'achat en ligne.",
+    "atouts": [
+      {
+        "titre": "Tout au même endroit",
+        "texte": "Librairie, impression, reliure, grand format et services digitaux sous le même toit."
+      },
+      {
+        "titre": "Ouvert jusqu'à 21h",
+        "texte": "Du samedi au jeudi de 7h30 à 21h, le vendredi de 14h à 21h."
+      },
+      {
+        "titre": "Trois langues",
+        "texte": "Nous travaillons en français, en arabe et en anglais."
+      },
+      {
+        "titre": "À côté des établissements",
+        "texte": "Près d'un lycée et d'une école privée : pratique pour les élèves, les parents et les enseignants."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Où se trouve la boutique ?",
+        "reponse": "Rue des frères Abbabsa, 05000 Batna, Algérie."
+      },
+      {
+        "question": "Quels sont vos horaires ?",
+        "reponse": "Du samedi au jeudi de 7h30 à 21h, et le vendredi de 14h à 21h."
+      },
+      {
+        "question": "Comment vous contacter ?",
+        "reponse": "Par téléphone ou WhatsApp au 0773 58 99 54."
+      },
+      {
+        "question": "Quels services proposez-vous ?",
+        "reponse": "Impression et photocopie, grand format pour architectes, mise en page de mémoires et rapports, fournitures et impression pour écoles et lycées, services digitaux et IA, et achats en ligne."
+      }
+    ]
+  },
+  "services": {
+    "print": {
+      "name": "Impression et photocopie",
+      "card": "Photocopie, impression couleur, scan, plastification et reliure.",
+      "title": "Impression et photocopie à Batna | Maktaba Warraqa",
+      "h1": "Impression et photocopie à Batna",
+      "meta": "Photocopie, impression noir et blanc ou couleur, scan, plastification et reliure à Batna. Cartes de visite, flyers, affiches. Appelez le 0773 58 99 54.",
+      "summary": "Maktaba Warraqa imprime et photocopie vos documents à Batna, en noir et blanc ou en couleur : cours, dossiers, CV, flyers, affiches et cartes de visite. Nous assurons aussi le scan, la plastification et la reliure thermique ou spirale. Apportez votre fichier sur clé USB ou envoyez-le par WhatsApp.",
+      "items": [
+        "Photocopie et impression noir et blanc",
+        "Impression couleur",
+        "Scan de documents",
+        "Plastification",
+        "Reliure thermique et spirale",
+        "Cartes de visite, flyers et affiches"
+      ],
+      "faq": [
+        {
+          "question": "Quels fichiers puis-je faire imprimer ?",
+          "reponse": "PDF, Word, PowerPoint et images. Vous pouvez venir avec une clé USB ou envoyer vos fichiers par WhatsApp au 0773 58 99 54."
+        },
+        {
+          "question": "Proposez-vous la reliure ?",
+          "reponse": "Oui, reliure thermique et reliure spirale, pour mémoires, rapports et dossiers."
+        },
+        {
+          "question": "Pouvez-vous imprimer des cartes de visite et des flyers ?",
+          "reponse": "Oui. Envoyez votre maquette ou demandez-nous de la préparer, puis nous vous donnons un devis."
+        }
+      ]
+    },
+    "largeformat": {
+      "name": "Grand format pour architectes",
+      "card": "Plans A2, A1, A0, scan grand format et dossiers de concours.",
+      "title": "Impression grand format architectes à Batna | Maktaba Warraqa",
+      "h1": "Impression grand format pour architectes à Batna",
+      "meta": "Tirage de plans A2, A1 et A0, scan grand format, reliure de dossiers de concours, papier calque et fournitures de maquette à Batna. 0773 58 99 54.",
+      "summary": "Nous imprimons et scannons les plans en grand format (A2, A1 et A0) pour les architectes, bureaux d'études et étudiants en architecture de Batna. Nous relions aussi les dossiers de concours et fournissons papier calque, carton mousse et fournitures de maquette.",
+      "items": [
+        "Tirage de plans A2, A1 et A0",
+        "Scan grand format",
+        "Reliure de dossiers de concours",
+        "Papier calque",
+        "Carton mousse",
+        "Fournitures de maquette"
+      ],
+      "faq": [
+        {
+          "question": "Quels formats grand format imprimez-vous ?",
+          "reponse": "Du A2 au A0. Envoyez votre plan en PDF à l'échelle, par WhatsApp ou sur clé USB."
+        },
+        {
+          "question": "Pouvez-vous relier un dossier de concours ?",
+          "reponse": "Oui, nous assurons la reliure et la mise en forme des dossiers de concours."
+        },
+        {
+          "question": "Avez-vous du papier calque et du carton mousse ?",
+          "reponse": "Oui, nous proposons papier calque, carton mousse et fournitures de maquette."
+        }
+      ]
+    },
+    "reports": {
+      "name": "Mémoires et rapports",
+      "card": "Mémoires, PFE, rapports, CV : nous soignons la mise en page.",
+      "title": "Mise en page de mémoires et rapports à Batna | Maktaba Warraqa",
+      "h1": "Mise en page de mémoires et rapports à Batna",
+      "meta": "Mise en page et impression de mémoires, PFE, rapports de stage et techniques, dossiers de concours, CV et lettres de motivation à Batna. 0773 58 99 54.",
+      "summary": "Nous mettons en page et imprimons vos mémoires, exposés, projets de fin d'études, rapports de stage et rapports techniques à Batna. Nous préparons aussi les dossiers de concours, les rapports d'expertise, les CV et les lettres de motivation en français, anglais et arabe. Le contenu reste le vôtre : nous nous occupons de la forme.",
+      "items": [
+        "Mise en page de mémoires, exposés et PFE",
+        "Rapports de stage et rapports techniques",
+        "Dossiers de concours et rapports d'expertise",
+        "CV et lettres de motivation (français, anglais, arabe)",
+        "Impression et reliure du document final"
+      ],
+      "faq": [
+        {
+          "question": "Rédigez-vous le contenu de mon mémoire ?",
+          "reponse": "Non. Nous assurons la mise en page, la mise en forme et l'impression. Le contenu reste le vôtre."
+        },
+        {
+          "question": "Pouvez-vous respecter le modèle de mon université ?",
+          "reponse": "Oui. Envoyez votre fichier avec la charte de votre université ou de votre école, nous l'appliquons."
+        },
+        {
+          "question": "Pouvez-vous faire mon CV en arabe, français ou anglais ?",
+          "reponse": "Oui, en arabe, en français ou en anglais."
+        }
+      ]
+    },
+    "school": {
+      "name": "Écoles et lycées",
+      "card": "Polycopiés, packs rentrée, badges, diplômes et photos d'identité.",
+      "title": "Fournitures et impression pour écoles à Batna | Maktaba Warraqa",
+      "h1": "Fournitures et impression pour écoles et lycées à Batna",
+      "meta": "Polycopiés de cours, impression d'examens, packs rentrée, badges, diplômes, photos d'identité et fournitures scolaires à Batna. Appelez le 0773 58 99 54.",
+      "summary": "Nous imprimons les polycopiés de cours et les examens, préparons des packs de fournitures pour la rentrée par niveau, et réalisons badges, diplômes, bulletins et affiches pour les écoles, lycées et enseignants de Batna. Nous faisons aussi les photos d'identité et préparons les dossiers administratifs.",
+      "items": [
+        "Polycopiés de cours et impression d'examens",
+        "Packs rentrée par niveau (primaire, collège, lycée)",
+        "Badges, diplômes, bulletins et affiches",
+        "Photos d'identité et dossiers administratifs",
+        "Fournitures scolaires et de bureau"
+      ],
+      "faq": [
+        {
+          "question": "Proposez-vous des tarifs pour les établissements ?",
+          "reponse": "Oui. Pour les écoles, lycées et enseignants qui impriment régulièrement, nous proposons un contrat adapté. Contactez-nous pour un devis."
+        },
+        {
+          "question": "Comment fonctionnent les packs rentrée ?",
+          "reponse": "Nous préparons des listes de fournitures par niveau (primaire, collège, lycée). Demandez la liste de votre niveau en boutique ou par WhatsApp."
+        },
+        {
+          "question": "Pouvez-vous imprimer des examens en grande quantité ?",
+          "reponse": "Oui. Envoyez le fichier et le nombre de copies, nous vous confirmons le délai."
+        }
+      ]
+    },
+    "digital": {
+      "name": "Services digitaux et IA",
+      "card": "Abonnements IA sur votre compte, ateliers, Canva et fiche Google.",
+      "title": "Services digitaux et IA à Batna | Maktaba Warraqa",
+      "h1": "Services digitaux et IA à Batna",
+      "meta": "Abonnements ChatGPT, Gemini et Claude sur votre compte, ateliers IA, design Canva et fiche Google Business Profile à Batna. Appelez le 0773 58 99 54.",
+      "summary": "Nous vous aidons à souscrire un abonnement ChatGPT, Gemini ou Claude et à l'activer sur votre propre compte. Nous animons aussi des ateliers IA pour élèves, étudiants et enseignants, créons des visuels Canva et configurons la fiche Google Business Profile des commerçants.",
+      "items": [
+        "Abonnements ChatGPT, Gemini et Claude sur votre compte",
+        "Ateliers IA pour élèves, étudiants et enseignants",
+        "Design Canva : affiches, posts et présentations",
+        "Fiche Google Business Profile pour commerçants",
+        "Logos, QR codes et cartes de visite pour commerçants"
+      ],
+      "faq": [
+        {
+          "question": "Mon abonnement est-il sur mon propre compte ?",
+          "reponse": "Oui. L'abonnement est activé sur votre propre compte. Nous ne partageons pas de comptes."
+        },
+        {
+          "question": "Quels services d'IA proposez-vous ?",
+          "reponse": "ChatGPT, Gemini et Claude. Contactez-nous pour connaître les offres disponibles."
+        },
+        {
+          "question": "Organisez-vous des ateliers pour les élèves et les étudiants ?",
+          "reponse": "Oui, sur l'usage de l'IA pour la recherche, la rédaction et la synthèse. Contactez-nous pour organiser un atelier."
+        }
+      ]
+    },
+    "shopping": {
+      "name": "Achats en ligne",
+      "card": "AliExpress, France, Europe : commande, suivi et retrait en boutique.",
+      "title": "Achats en ligne AliExpress à Batna | Maktaba Warraqa",
+      "h1": "Achats en ligne : AliExpress, France et Europe",
+      "meta": "Nous commandons pour vous sur AliExpress et les sites français et européens, gérons paiement et suivi, et vous retirez votre colis à Batna. 0773 58 99 54.",
+      "summary": "Nous vous aidons à commander sur AliExpress, sur les sites français et européens et sur d'autres sites internationaux. Nous nous occupons de la commande, du paiement et du suivi, puis vous retirez votre colis en boutique à Batna.",
+      "items": [
+        "Commandes AliExpress et sites internationaux",
+        "Achats sur les sites français et européens",
+        "Paiement et suivi de commande",
+        "Retrait du colis en boutique"
+      ],
+      "faq": [
+        {
+          "question": "Sur quels sites pouvez-vous commander ?",
+          "reponse": "AliExpress, les sites français et européens et d'autres sites internationaux. Dites-nous quel produit vous voulez, nous vous confirmons si c'est possible."
+        },
+        {
+          "question": "Comment suivre ma commande ?",
+          "reponse": "Nous suivons la commande pour vous et vous prévenons à l'arrivée du colis."
+        },
+        {
+          "question": "Où retirer mon colis ?",
+          "reponse": "En boutique, Rue des frères Abbabsa à Batna."
+        }
+      ]
+    }
+  }
+}
