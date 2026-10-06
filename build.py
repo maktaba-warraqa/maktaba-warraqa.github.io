@@ -287,6 +287,7 @@ def business_ld(lang):
             "addressCountry": BIZ["country"],
         },
         "hasMap": BIZ["maps"],
+        **({"sameAs": [BIZ["gbp"]]} if BIZ["gbp"] else {}),
         "areaServed": {"@type": "City", "name": "Batna"},
         "openingHoursSpecification": opening_ld(),
         "knowsLanguage": ["fr", "ar", "en"],
@@ -387,7 +388,10 @@ def visit_section(lang):
         + f'</dd><dt>{esc(u["phone"])}</dt><dd><a href="{tel()}"><bdi dir="ltr">{BIZ["phone"]}</bdi></a></dd></dl>'
         f'<div class="vbtns"><a class="btn" href="{tel()}">{esc(u["call"])}</a>'
         f'<a class="btn alt" href="{wa()}" rel="noopener">{esc(u["wa"])}</a>'
-        f'<a class="btn alt" href="{BIZ["maps"]}" rel="noopener">{esc(u["route"])}</a></div>'
+        f'<a class="btn alt" href="{BIZ["maps"]}" rel="noopener">{esc(u["route"])}</a>'
+        + (f'<a class="btn alt" href="{esc(BIZ["gbp"])}" rel="noopener">{esc(u["reviews"])}</a>' if BIZ["gbp"] else "")
+        + (f'<a class="btn alt" href="{esc(BIZ["review"])}" rel="noopener">{esc(u["leave_review"])}</a>' if BIZ["review"] else "")
+        + '</div>'
         "</div></div></section>"
     )
 
@@ -405,7 +409,10 @@ def footer(lang):
         "<footer><div class=\"wrap\">"
         f'<div><h2>{esc(BIZ["brand"])} · {esc(BIZ["brand_ar"])}</h2><p>{esc(u["brand_line"])}</p>'
         f'<address style="font-style:normal"><p>{esc(u["address_full"])}</p>'
-        f'<p><a href="{tel()}"><bdi dir="ltr">{BIZ["phone"]}</bdi></a></p></address></div>'
+        f'<p><a href="{tel()}"><bdi dir="ltr">{BIZ["phone"]}</bdi></a></p></address>'
+        + (f'<p><a href="{esc(BIZ["gbp"])}" rel="noopener">{esc(u["find_us"])} : {esc(u["reviews"])}</a></p>' if BIZ["gbp"] else "")
+        + (f'<p><a href="{esc(BIZ["review"])}" rel="noopener">{esc(u["leave_review"])}</a></p>' if BIZ["review"] else "")
+        + '</div>'
         f'<div><h2>{esc(u["services"])}</h2><ul>{svc_links}</ul></div>'
         f'<div><h2>{esc(u["hours"])}</h2>{hours}</div>'
         f'<p class="copy">© {year} {esc(BIZ["brand"])}. {esc(u["rights"])}</p>'
@@ -724,6 +731,7 @@ def build_text_files():
         f"- Phone and WhatsApp: {BIZ['phone']} ({BIZ['phone_e164']})",
         "- Hours: " + hours_line(),
         f"- Map: {BIZ['maps']}",
+        *([f"- Google Business Profile (reviews): {BIZ['gbp']}"] if BIZ["gbp"] else []),
         "",
     ]
     for lang in LANGS:

@@ -39,6 +39,7 @@ content:
           values:
             - { value: print, label: "Impression et photocopie" }
             - { value: largeformat, label: "Grand format / plans architectes" }
+            - { value: design, label: "Logo, carte de visite, charte, site vitrine" }
             - { value: reports, label: "Mémoires et rapports" }
             - { value: school, label: "Écoles et lycées" }
             - { value: digital, label: "Services digitaux et IA" }
@@ -59,6 +60,8 @@ content:
       - { name: ville, label: "Ville / المدينة", type: string, required: true }
       - { name: code_postal, label: "Code postal", type: string, required: true }
       - { name: google_maps, label: "Lien Google Maps", type: string, required: true }
+      - { name: fiche_google, label: "Lien de la fiche Google Business Profile (facultatif)", type: string, description: "Dans Google Maps, ouvrez la fiche Maktaba Warraqa > Partager > copier le lien. Les boutons « Nos avis Google » apparaîtront sur le site." }
+      - { name: lien_avis, label: "Lien « Laisser un avis » Google (facultatif)", type: string, description: "Dans Google Business Profile : Demander des avis > copier le lien (g.page/r/...). Un bouton apparaîtra sur le site." }
       - name: horaires
         label: "Horaires pour Google (données techniques) / أوقات العمل"
         description: "Heures au format 07:30 et 21:00. Pensez aussi à modifier les horaires affichés dans chaque langue."
@@ -142,6 +145,24 @@ content:
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
           - name: largeformat
             label: "Grand format architectes / الأحجام الكبيرة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: design
+            label: "Logo, carte de visite, charte, site vitrine / التصميم والمواقع"
             type: object
             fields:
               - { name: name, label: "Nom du service", type: string, required: true }
@@ -307,6 +328,24 @@ content:
                   - { name: reponse, label: Réponse, type: text, required: true }
               - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: design
+            label: "Logo, carte de visite, charte, site vitrine / التصميم والمواقع"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
           - name: reports
             label: "Mémoires et rapports / المذكرات والتقارير"
             type: object
@@ -440,6 +479,24 @@ content:
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
           - name: largeformat
             label: "Grand format architectes / الأحجام الكبيرة"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: design
+            label: "Logo, carte de visite, charte, site vitrine / التصميم والمواقع"
             type: object
             fields:
               - { name: name, label: "Nom du service", type: string, required: true }

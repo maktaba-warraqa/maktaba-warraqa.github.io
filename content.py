@@ -26,6 +26,9 @@ BIZ = {
     "phone_e164": "+" + _intl,
     "whatsapp": _intl,
     "maps": _shop["google_maps"].strip(),
+    # Google Business Profile: public profile (reviews) and optional "leave a review" link
+    "gbp": (_shop.get("fiche_google") or "").strip(),
+    "review": (_shop.get("lien_avis") or "").strip(),
     "street": _shop["rue"].strip(),
     "city": _shop["ville"].strip(),
     "postal": _shop["code_postal"].strip(),
@@ -123,7 +126,7 @@ UI = {
     },
 }
 
-SVC_ORDER = ["print", "largeformat", "reports", "school", "digital", "shopping"]
+SVC_ORDER = ["print", "largeformat", "design", "reports", "school", "digital", "shopping"]
 
 SLUGS = {
     "print": {
@@ -145,6 +148,11 @@ SLUGS = {
         "fr": "fournitures-impression-ecoles-batna",
         "en": "school-supplies-printing-batna",
         "ar": "school-supplies-printing-batna",
+    },
+    "design": {
+        "fr": "creation-logo-carte-visite-site-vitrine-batna",
+        "en": "logo-business-card-website-design-batna",
+        "ar": "logo-business-card-website-design-batna",
     },
     "digital": {
         "fr": "services-digitaux-ia-batna",
@@ -203,9 +211,9 @@ SVC = {
 
 # ---------- blog ----------
 BLOG_UI = {
-    "fr": {"blog": "Blog", "blog_title": "Conseils et actualités", "blog_lead": "Nos conseils pour vos impressions, mémoires, plans et démarches en ligne à Batna.", "latest": "Derniers articles", "read": "Lire l'article", "published": "Publié le", "all_posts": "Tous les articles", "related": "Nos conseils sur ce sujet"},
-    "en": {"blog": "Blog", "blog_title": "Tips and news", "blog_lead": "Our tips for printing, thesis formatting, plans and online services in Batna.", "latest": "Latest articles", "read": "Read the article", "published": "Published on", "all_posts": "All articles", "related": "Our tips on this topic"},
-    "ar": {"blog": "المدونة", "blog_title": "نصائح وأخبار", "blog_lead": "نصائحنا للطباعة والمذكرات والمخططات والخدمات الرقمية في باتنة.", "latest": "آخر المقالات", "read": "اقرأ المقال", "published": "نُشر في", "all_posts": "كل المقالات", "related": "نصائح حول هذا الموضوع"},
+    "fr": {"blog": "Blog", "blog_title": "Conseils et actualités", "blog_lead": "Nos conseils pour vos impressions, mémoires, plans et démarches en ligne à Batna.", "latest": "Derniers articles", "read": "Lire l'article", "published": "Publié le", "all_posts": "Tous les articles", "related": "Nos conseils sur ce sujet", "reviews": "Nos avis Google", "leave_review": "Laisser un avis Google", "find_us": "Retrouvez-nous sur Google"},
+    "en": {"blog": "Blog", "blog_title": "Tips and news", "blog_lead": "Our tips for printing, thesis formatting, plans and online services in Batna.", "latest": "Latest articles", "read": "Read the article", "published": "Published on", "all_posts": "All articles", "related": "Our tips on this topic", "reviews": "Our Google reviews", "leave_review": "Leave a Google review", "find_us": "Find us on Google"},
+    "ar": {"blog": "المدونة", "blog_title": "نصائح وأخبار", "blog_lead": "نصائحنا للطباعة والمذكرات والمخططات والخدمات الرقمية في باتنة.", "latest": "آخر المقالات", "read": "اقرأ المقال", "published": "نُشر في", "all_posts": "كل المقالات", "related": "نصائح حول هذا الموضوع", "reviews": "آراء زبائننا على Google", "leave_review": "اترك رأيك على Google", "find_us": "تجدوننا على Google"},
 }
 for _lang in LANGS:
     UI[_lang].update(BLOG_UI[_lang])
