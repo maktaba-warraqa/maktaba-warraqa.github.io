@@ -523,6 +523,7 @@ def build_sitemap():
 
 def build_text_files():
     write("/robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+    write("/09179b15a8c42e416cc7712b095079b1.txt", "09179b15a8c42e416cc7712b095079b1")
     lines = [
         f"# {BIZ['brand']} ({BIZ['brand_ar']})",
         "",
