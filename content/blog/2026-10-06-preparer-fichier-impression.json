@@ -2,6 +2,7 @@
   "titre": "Préparer un fichier pour l'impression : PDF, photos",
   "slug": "preparer-fichier-impression",
   "langue": "fr",
+  "service": "print",
   "date": "2026-10-06",
   "resume": "Format, PDF, résolution des images, recto verso, couleurs : les réglages simples pour que vos documents s'impriment comme à l'écran.",
   "image": "",
