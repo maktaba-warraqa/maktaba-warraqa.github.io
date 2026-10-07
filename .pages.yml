@@ -47,6 +47,7 @@ content:
             - { value: school, label: "Écoles et lycées" }
             - { value: digital, label: "Services digitaux et IA" }
             - { value: shopping, label: "Achats en ligne" }
+            - { value: admin, label: "Démarches administratives en ligne" }
       - { name: date, label: "Date / التاريخ", type: date, required: true }
       - { name: resume, label: "Résumé (affiché dans Google, 155 caractères max) / ملخص", type: text, required: true, options: { maxlength: 160 } }
       - { name: image, label: "Image principale (facultatif) / صورة", type: image, description: "Photo horizontale de préférence. Elle est réduite automatiquement." }
@@ -308,6 +309,24 @@ content:
                   - { name: reponse, label: Réponse, type: text, required: true }
               - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: admin
+            label: "Démarches administratives en ligne"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
   - name: textes_ar
     label: "Textes en arabe / النصوص بالعربية"
     type: file
@@ -529,6 +548,24 @@ content:
                   - { name: reponse, label: Réponse, type: text, required: true }
               - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: admin
+            label: "الخدمات الإدارية عبر الإنترنت"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
   - name: textes_en
     label: "Textes en anglais / النصوص بالإنجليزية"
     type: file
@@ -734,6 +771,24 @@ content:
               - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
           - name: shopping
             label: "Achats en ligne / الشراء عبر الإنترنت"
+            type: object
+            fields:
+              - { name: name, label: "Nom du service", type: string, required: true }
+              - { name: card, label: "Résumé court (carte sur l'accueil)", type: string, required: true }
+              - { name: h1, label: "Grand titre de la page", type: string, required: true }
+              - { name: summary, label: "Texte de présentation", type: text, required: true }
+              - { name: items, label: "Ce que nous proposons (une ligne par prestation)", type: string, list: true }
+              - name: faq
+                label: "Questions fréquentes"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: Question, type: string, required: true }
+                  - { name: reponse, label: Réponse, type: text, required: true }
+              - { name: title, label: "Titre Google (60 caractères max)", type: string, required: true }
+              - { name: meta, label: "Description Google (155 caractères max)", type: text, required: true }
+          - name: admin
+            label: "Online administrative services"
             type: object
             fields:
               - { name: name, label: "Nom du service", type: string, required: true }

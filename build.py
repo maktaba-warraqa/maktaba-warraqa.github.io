@@ -113,6 +113,32 @@ a:focus-visible{outline:3px solid var(--or);outline-offset:3px}
 .logo{display:block;line-height:0}
 .logo img{height:68px;width:auto}
 .tools{display:flex;align-items:center;gap:14px}
+.top{position:relative}
+.main{display:flex;align-items:center;gap:4px;margin-inline:auto}
+.main>a,.main summary{display:block;padding:8px 16px;border-radius:30px;font-weight:700;text-decoration:none;cursor:pointer;list-style:none;line-height:1.4}
+.main summary::-webkit-details-marker,.burger summary::-webkit-details-marker{display:none}
+.main>a:hover,.main summary:hover,.main details[open] summary,.main a[aria-current],.main summary[aria-current]{background:var(--ink);color:var(--am)}
+.dd{position:relative}
+.dd summary::after{content:"";display:inline-block;margin-inline-start:8px;border:5px solid transparent;border-top-color:currentColor;border-bottom:0;vertical-align:middle}
+.dd ul{position:absolute;inset-inline-start:0;top:100%;margin:8px 0 0;padding:8px;list-style:none;background:#fff;border:2px solid var(--ink);border-radius:14px;min-width:300px;box-shadow:0 12px 32px rgba(0,0,0,.16);z-index:30}
+.dd ul a{display:block;padding:9px 14px;border-radius:10px;font-weight:600;text-decoration:none;line-height:1.4}
+.dd ul a:hover,.dd ul a[aria-current]{background:var(--am)}
+.burger{display:none}
+.burger summary{list-style:none;cursor:pointer;width:46px;height:46px;border:2px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.burger summary span,.burger summary span::before,.burger summary span::after{display:block;width:20px;height:2px;background:var(--ink);content:"";position:relative}
+.burger summary span::before{position:absolute;top:-6px}
+.burger summary span::after{position:absolute;top:6px}
+.burger[open] summary{background:var(--ink)}
+.burger[open] summary span{background:transparent}
+.burger[open] summary span::before,.burger[open] summary span::after{background:var(--am);top:0}
+.burger[open] summary span::before{transform:rotate(45deg)}
+.burger[open] summary span::after{transform:rotate(-45deg)}
+.panel{position:absolute;inset-inline:0;top:100%;background:#fff;border-bottom:3px solid var(--or);padding:8px 20px 16px;z-index:30;box-shadow:0 14px 24px rgba(0,0,0,.14);max-height:calc(100vh - 90px);overflow:auto}
+.panel a{display:block;padding:12px 4px;text-decoration:none;font-weight:700;border-bottom:1px solid var(--line)}
+.panel p{margin:14px 4px 4px;font-weight:800;color:var(--or)}
+.panel ul{list-style:none;margin:0;padding:0}
+.panel ul a{font-weight:600;padding-inline-start:14px}
+.panel a[aria-current]{color:var(--or)}
 .langs{display:flex;gap:6px;margin:0;padding:0;list-style:none}
 .langs a{display:block;padding:5px 11px;border-radius:20px;text-decoration:none;font-weight:700;font-size:15px;border:2px solid var(--ink);line-height:1.5}
 .langs a[aria-current]{background:var(--ink);color:var(--am)}
@@ -182,6 +208,8 @@ footer p{margin:0 0 6px}
 .grid,.items{grid-template-columns:1fr}
 .why{grid-template-columns:1fr 1fr}
 .top .btn{display:none}
+.main{display:none}
+.burger{display:block}
 .top .wrap{min-height:76px}
 .logo img{height:58px}
 section{padding:40px 0}
@@ -364,14 +392,31 @@ def head(lang, page, title, meta, graph, og_type="website", image=None):
 
 def header(lang, page):
     u = UI[lang]
+
+    def cur(p):
+        return ' aria-current="page"' if tuple(page[:len(p)]) == p else ""
+
+    svc = "".join(
+        f'<li><a href="{href(svc_path(lang, k))}"{cur(("svc", k))}>{esc(SVC[lang][k]["name"])}</a></li>' for k in SVC_ORDER
+    )
+    blog = f'<a href="{href(blog_path(lang))}">{esc(u["blog_title"])}</a>' if lang in BLOG_LANGS else ""
+    home = f'<a href="{href(home_path(lang))}"{cur(("home",))}>{esc(u["home"])}</a>'
+    contact = f'<a href="#contact">{esc(u["contact"])}</a>'
+    in_svc = " aria-current=\"true\"" if page and page[0] == "svc" else ""
     return (
         f'<a class="skip" href="#main">{esc(u["skip"])}</a>'
         '<header class="top"><div class="wrap">'
         f'<a class="logo" href="{href(home_path(lang))}">'
         f'<img src="{asset("img/logo-190.webp")}" srcset="{asset("img/logo-190.webp")} 1x,{asset("img/logo-380.webp")} 2x" '
         f'width="95" height="64" alt="{esc(BIZ["brand"])} - {esc(BIZ["brand_ar"])}"></a>'
+        f'<nav class="main" aria-label="{esc(u["menu"])}">{home}'
+        f'<details class="dd"><summary{in_svc}>{esc(u["services"])}</summary><ul>{svc}</ul></details>'
+        f'{blog}{contact}</nav>'
         f'<div class="tools">{lang_switch(lang, page)}'
-        f'<a class="btn" href="{tel()}">{esc(u["call"])}</a></div>'
+        f'<a class="btn" href="{tel()}">{esc(u["call"])}</a>'
+        f'<details class="burger"><summary aria-label="{esc(u["menu"])}"><span></span></summary>'
+        f'<nav class="panel" aria-label="{esc(u["menu"])}">{home}'
+        f'<p>{esc(u["services"])}</p><ul>{svc}</ul>{blog}{contact}</nav></details></div>'
         "</div></header>"
         '<div class="stripe" aria-hidden="true"><i></i><i></i><i></i></div>'
     )
@@ -673,7 +718,7 @@ def build_404():
     )
     doc = (
         f'<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-        f'<title>{esc(u["nf_title"])} | {esc(BIZ["brand"])}</title><meta name="robots" content="noindex">'
+        f'<title>{esc(u["nf_title"])} | {esc(BIZ["brand"])}</title>'
         f"<style>{CSS}</style></head><body>{header(lang, ('home',))}<main id=\"main\">{main}</main>{footer(lang)}</body></html>"
     )
     write("/404.html", doc)

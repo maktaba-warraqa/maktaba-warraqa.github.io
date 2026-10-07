@@ -69,6 +69,7 @@ UI = {
         "nf_title": "Page introuvable",
         "nf_text": "Cette page n'existe pas. Retournez à l'accueil.",
         "lang_name": "Langue",
+        "menu": "Menu",
     },
     "en": {
         "skip": "Skip to content",
@@ -96,6 +97,7 @@ UI = {
         "nf_title": "Page not found",
         "nf_text": "This page does not exist. Go back to the home page.",
         "lang_name": "Language",
+        "menu": "Menu",
     },
     "ar": {
         "skip": "انتقل إلى المحتوى",
@@ -123,10 +125,11 @@ UI = {
         "nf_title": "الصفحة غير موجودة",
         "nf_text": "هذه الصفحة غير موجودة. عد إلى الصفحة الرئيسية.",
         "lang_name": "اللغة",
+        "menu": "القائمة",
     },
 }
 
-SVC_ORDER = ["print", "largeformat", "logo", "branding", "cards", "website", "reports", "school", "digital", "shopping"]
+SVC_ORDER = ["print", "largeformat", "logo", "branding", "cards", "website", "reports", "school", "digital", "admin", "shopping"]
 
 SLUGS = {
     "print": {
@@ -173,6 +176,11 @@ SLUGS = {
         "fr": "services-digitaux-ia-batna",
         "en": "digital-ai-services-batna",
         "ar": "digital-ai-services-batna",
+    },
+    "admin": {
+        "fr": "demarches-administratives-en-ligne-batna",
+        "en": "online-administrative-services-batna",
+        "ar": "online-administrative-services-batna",
     },
     "shopping": {
         "fr": "achats-en-ligne-aliexpress-batna",
