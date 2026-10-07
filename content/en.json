@@ -377,6 +377,46 @@
           "reponse": "In store, Rue des frères Abbabsa in Batna."
         }
       ]
+    },
+    "admin": {
+      "name": "Online administrative services",
+      "card": "Civil status, CNAS, CASNOS, taxes, trade register, ANEM, PROGRES: we handle your online procedures.",
+      "title": "Online Administrative Services in Batna | Maktaba Warraqa",
+      "h1": "Online administrative services in Batna",
+      "meta": "Civil status records, criminal record, CNAS, CASNOS, taxes, trade register, NESDA, ANEM, PROGRES: we handle them for you. 0773 58 99 54.",
+      "summary": "No time, or not used to the official platforms? We carry out your online procedures for you: application, file submission, follow-up and printing of the documents. Our prices cover our service and do not include the official fees charged by the administrations.",
+      "items": [
+        "Civil status records: birth, marriage and death certificates",
+        "Remote filing, document tracking (passport, ID card, licence) and 12S certificate",
+        "Criminal record extract no. 3",
+        "CNAS: non-affiliation certificate and El Hanaa account",
+        "CASNOS: non-affiliation certificate and online affiliation",
+        "Hajj lottery registration",
+        "Taxes: NIF, Jibayatic, vehicle tax sticker and tax stamp",
+        "Trade register: Sidjilcom search, electronic registration and amendments",
+        "NESDA, ANGEM, ANEM: micro-business, micro-credit, Tamkeen platform, registration and file follow-up",
+        "Professional CV design",
+        "Education: PROGRES (university enrolment and services, doctoral competition, parents' space) and school enrolment",
+        "Online housing applications"
+      ],
+      "faq": [
+        {
+          "question": "Which procedures can you handle?",
+          "reponse": "Civil status records, criminal record extract no. 3, CNAS and CASNOS certificates, 12S certificate, NIF, trade register, NESDA, ANGEM, ANEM, PROGRES and more. Tell us what you need and we will confirm whether we can do it."
+        },
+        {
+          "question": "Are official fees included in your prices?",
+          "reponse": "No. Our prices cover our service and technical assistance. The official fees charged by the administrations are paid by you."
+        },
+        {
+          "question": "How much does a procedure cost?",
+          "reponse": "The price depends on the procedure. Ask for a quote by phone or WhatsApp on 0773 58 99 54."
+        },
+        {
+          "question": "Can you help me register a business or start a micro-business?",
+          "reponse": "Yes. We assist with the electronic trade register, NESDA or ANGEM micro-business and ANEM registration."
+        }
+      ]
     }
   }
 }

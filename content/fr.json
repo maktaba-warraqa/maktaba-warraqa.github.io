@@ -377,6 +377,46 @@
           "reponse": "En boutique, Rue des frères Abbabsa à Batna."
         }
       ]
+    },
+    "admin": {
+      "name": "Démarches administratives en ligne",
+      "card": "État civil, CNAS, CASNOS, impôts, registre du commerce, ANEM, PROGRES : nous faisons vos démarches en ligne.",
+      "title": "Démarches administratives en ligne à Batna | Maktaba Warraqa",
+      "h1": "Démarches administratives en ligne à Batna",
+      "meta": "Actes d'état civil, casier judiciaire, CNAS, CASNOS, impôts, registre du commerce, NESDA, ANEM, PROGRES : on s'en occupe pour vous. 0773 58 99 54.",
+      "summary": "Vous n'avez pas le temps, ou pas l'habitude des plateformes officielles ? Nous réalisons vos démarches en ligne à votre place : demande, dépôt du dossier, suivi et impression des documents. Nos tarifs correspondent à notre service et n'incluent pas les frais officiels demandés par les administrations.",
+      "items": [
+        "Actes d'état civil : naissance, mariage et décès",
+        "Guichet à distance, suivi des documents (passeport, carte, permis) et certificat 12S",
+        "Casier judiciaire n°3",
+        "CNAS : certificat de non-affiliation et compte El Hanaa",
+        "CASNOS : certificat de non-affiliation et affiliation en ligne",
+        "Inscription au tirage Hadj",
+        "Impôts : NIF, Jibayatic, vignette et timbre fiscal des véhicules",
+        "Registre du commerce : recherche Sidjilcom, création et modification du registre électronique",
+        "NESDA, ANGEM, ANEM : micro-entreprise, micro-crédit, plateforme Tamkeen, inscription et suivi du dossier",
+        "Conception de CV professionnel",
+        "Éducation : PROGRES (inscriptions et services universitaires, concours de doctorat, espace parents) et inscriptions scolaires",
+        "Dossiers de logement en ligne"
+      ],
+      "faq": [
+        {
+          "question": "Quelles démarches pouvez-vous faire ?",
+          "reponse": "Actes d'état civil, casier judiciaire n°3, certificats CNAS et CASNOS, certificat 12S, NIF, registre du commerce, NESDA, ANGEM, ANEM, PROGRES et d'autres. Dites-nous votre besoin, nous vous confirmons si nous pouvons le faire."
+        },
+        {
+          "question": "Les frais officiels sont-ils inclus dans vos tarifs ?",
+          "reponse": "Non. Nos tarifs rémunèrent notre service et notre assistance technique. Les frais officiels demandés par les administrations restent à votre charge."
+        },
+        {
+          "question": "Combien coûte une démarche ?",
+          "reponse": "Le tarif dépend de la démarche. Demandez votre devis par téléphone ou WhatsApp au 0773 58 99 54."
+        },
+        {
+          "question": "Pouvez-vous m'aider à créer mon registre du commerce ou ma micro-entreprise ?",
+          "reponse": "Oui. Nous vous accompagnons pour le registre du commerce électronique, la micro-entreprise NESDA ou ANGEM et l'inscription à l'ANEM."
+        }
+      ]
     }
   }
 }
